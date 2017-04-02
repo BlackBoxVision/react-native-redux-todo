@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
-import TodoApp from './src/App';
+import todoApp from './src/App';
 
-AppRegistry.registerComponent('TodoApp', () => TodoApp);
+AppRegistry.registerComponent('todoApp', () => todoApp);
