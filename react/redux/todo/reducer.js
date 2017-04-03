@@ -32,7 +32,7 @@ export default function reducer(state = initialState, action) {
         case TodoActions.REMOVE_TODO:
             return {
                 ...state,
-                items: [...state.items].filter(it => it !== action.payload.id)
+                items: [...state.items].filter(it => it.key !== action.payload.id)
             };
 
         case TodoActions.VISIBILITY_FILTER:

@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { Container } from 'native-base';
 
-import Header from '../components/Header';
-import Body from '../components/Body';
-import Footer from '../components/Footer';
+import Header from '../components/base/Header';
+import Body from '../components/base/Body';
+import Footer from '../components/base/Footer';
 
 import app from '../../app.json';
 
-export default class TodoApp extends Component {
+export default class AppContainer extends Component {
     static propTypes = {
         todos: PropTypes.array,
         text: PropTypes.string,

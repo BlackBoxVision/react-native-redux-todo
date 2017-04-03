@@ -3,6 +3,8 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"android": "react-native run-android",
+		"ios": "react-native run-ios",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
 	},
@@ -12,13 +14,18 @@
 		"react-native": "0.42.3",
 		"react-redux": "^5.0.3",
 		"redux": "^3.6.0",
+		"redux-logger": "^3.0.1",
+		"redux-storage": "^4.1.2",
+		"redux-storage-engine-reactnativeasyncstorage": "^1.0.5",
 		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"babel-jest": "19.0.0",
 		"babel-preset-react-native": "1.9.1",
 		"jest": "19.0.2",
-		"react-test-renderer": "~15.4.1"
+		"react-test-renderer": "~15.4.1",
+		"remote-redux-devtools": "^0.5.7",
+		"remote-redux-devtools-on-debugger": "^0.7.0"
 	},
 	"jest": {
 		"preset": "react-native"
