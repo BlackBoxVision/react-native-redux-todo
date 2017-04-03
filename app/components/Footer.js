@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Text, Footer, FooterTab, Button } from 'native-base';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class TodoFooter extends Component {
     static propTypes = {
@@ -11,17 +12,17 @@ export default class TodoFooter extends Component {
             <Footer>
                 <FooterTab>
                     <Button onPress={() => this.props.onFilterChange('all')}>
-                        <Text>All</Text>
+                        <Icon name='assignment' size={20} color="#FFFFFF"/>
                     </Button>
                 </FooterTab>
                 <FooterTab>
                     <Button onPress={() => this.props.onFilterChange('complete')}>
-                        <Text>Completed</Text>
+                        <Icon name='assignment-turned-in' size={20} color="#FFFFFF"/>
                     </Button>
                 </FooterTab>
                 <FooterTab>
                     <Button onPress={() => this.props.onFilterChange('active')}>
-                        <Text>Active</Text>
+                        <Icon name='assignment-late' size={20} color="#FFFFFF"/>
                     </Button>
                 </FooterTab>
             </Footer>

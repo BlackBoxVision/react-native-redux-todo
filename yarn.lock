@@ -3436,7 +3436,7 @@ react-native-scrollable-tab-view@^0.7.1:
   dependencies:
     react-timer-mixin "^0.13.3"
 
-react-native-vector-icons@~4.0.0:
+react-native-vector-icons@^4.0.0, react-native-vector-icons@~4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.0.0.tgz#6a2f8f4c6ace613aed7748cd530809283e5b1538"
   dependencies:
