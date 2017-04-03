@@ -7,11 +7,16 @@ import Footer from '../components/Footer';
 
 import app from '../../app.json';
 
-export default class Todo extends Component {
+export default class TodoApp extends Component {
     static propTypes = {
+        todos: PropTypes.array,
+        text: PropTypes.string,
+        filter: PropTypes.string,
         toggle: PropTypes.func,
         remove: PropTypes.func,
         addTodo: PropTypes.func,
+        clearValue: PropTypes.func,
+        changeValue: PropTypes.func,
         changeFilter: PropTypes.func
     };
 
@@ -29,6 +34,7 @@ export default class Todo extends Component {
                 <Body
                     items={items}
                     value={value}
+                    filter={this.props.filter}
                     onSubmit={this.handleAdd}
                     onToggle={this.props.toggle}
                     onRemove={this.props.remove}

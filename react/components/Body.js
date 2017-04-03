@@ -5,6 +5,7 @@ import TodoItem from './TodoItem';
 
 export default class TodoBody extends Component {
     static propTypes = {
+        filter: PropTypes.string.isRequired,
         items: PropTypes.array.isRequired,
         value: PropTypes.string.isRequired,
         onSubmit: PropTypes.func.isRequired,
