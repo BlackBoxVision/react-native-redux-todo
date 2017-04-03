@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Content, List, Input, InputGroup, Form } from 'native-base';
 
+import EmptyView from './EmptyView';
 import TodoItem from './TodoItem';
 
 export default class TodoBody extends Component {
@@ -30,10 +31,8 @@ export default class TodoBody extends Component {
                         />
                     </InputGroup>
                 </Form>
-                <List
-                    dataArray={this.props.items}
-                    renderRow={this.renderItem}
-                />
+                {!this.props.items.length && <EmptyView message={`There are no ${this.props.filter} todos`}/>}
+                {this.props.items.length > 0 && <List dataArray={this.props.items} renderRow={this.renderItem}/>}
             </Content>
         )
     }

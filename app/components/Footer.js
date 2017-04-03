@@ -15,7 +15,7 @@ export default class TodoFooter extends Component {
                     </Button>
                 </FooterTab>
                 <FooterTab>
-                    <Button onPress={() => this.props.onFilterChange('completed')}>
+                    <Button onPress={() => this.props.onFilterChange('complete')}>
                         <Text>Completed</Text>
                     </Button>
                 </FooterTab>
