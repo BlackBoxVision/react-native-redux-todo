@@ -19,14 +19,18 @@ export default function reducer(state = initialState, action) {
         }
 
         case TodoActions.TOGGLE_TODO:
-            const newItems = [...state.items];
-            const index = newItems.findIndex(it => it.key === action.payload.id);
-
-            newItems[index].completed = true;
+            const newItems = state.items.filter(it => it.key !== action.payload.id);
+            const item = state.items.find(it => it.key === action.payload.id);
 
             return {
                 ...state,
-                items: newItems
+                items: [
+                    ...newItems,
+                    {
+                        ...item,
+                        completed: !item.completed
+                    }
+                ]
             };
 
         case TodoActions.REMOVE_TODO:
