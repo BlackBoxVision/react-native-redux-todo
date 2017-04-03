@@ -16,12 +16,7 @@ export default class AppContainer extends Component {
         items: PropTypes.array.isRequired,
         text: PropTypes.string.isRequired,
         filter: PropTypes.string.isRequired,
-        addTodo: PropTypes.func.isRequired,
-        toggleTodo: PropTypes.func.isRequired,
-        removeTodo: PropTypes.func.isRequired,
-        changeValue: PropTypes.func.isRequired,
-        clearValue: PropTypes.func.isRequired,
-        visibilityFilter: PropTypes.func.isRequired
+        actions: PropTypes.objectOf(PropTypes.func)
     };
 
     render() {
@@ -33,11 +28,11 @@ export default class AppContainer extends Component {
                     value={this.props.text}
                     filter={this.props.filter}
                     onSubmit={this.submitTodo}
-                    onToggle={this.props.toggleTodo}
-                    onRemove={this.props.removeTodo}
-                    onChangeText={this.props.changeValue}
+                    onToggle={this.props.actions.toggleTodo}
+                    onRemove={this.props.actions.removeTodo}
+                    onChangeText={this.props.actions.changeValue}
                 />
-                <Footer onFilterChange={this.props.visibilityFilter}/>
+                <Footer onFilterChange={this.props.actions.visibilityFilter}/>
             </Container>
         );
     }
@@ -45,12 +40,12 @@ export default class AppContainer extends Component {
     submitTodo = () => {
         if (this.props.text.length === 0) return;
 
-        this.props.addTodo({
+        this.props.actions.addTodo({
             key: Date.now(),
             text: this.props.text,
             completed: false
         });
 
-        this.props.clearValue();
+        this.props.actions.clearValue();
     }
 }

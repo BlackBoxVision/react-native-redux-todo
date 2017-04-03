@@ -1,10 +1,16 @@
-export function getItemsByFilter({ todo: { items, filter } }) {
+const Filters = {
+    ALL: 'all',
+    ACTIVE: 'active',
+    COMPLETE: 'complete'
+};
+
+export function getByFilter({ todo: { items, filter } }) {
     switch (filter) {
-        case 'active':
+        case Filters.ACTIVE:
             return items.filter(item => !item.completed);
-        case 'completed':
+        case Filters.COMPLETE:
             return items.filter(item => item.completed);
-        case 'all':
+        case Filters.ALL:
         default:
             return items;
     }
