@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { TextInput } from 'react-native';
-import { Container, Content, List, ListItem, Text, CheckBox, Left } from 'native-base';
+import { View } from 'react-native';
+import { Container, Content, List, ListItem, Text, CheckBox, Left, Input, InputGroup, Footer, FooterTab, Button } from 'native-base';
 
 import Header from './Header';
 import config from '../app.json';
@@ -18,18 +18,42 @@ export default class TodoApp extends Component {
         return (
             <Container>
                 <Header displayName={config.displayName}/>
-                <Content style={{ padding: 8 }}>
-                    <TextInput
-                        value={value}
-                        placeholder='Insert a to do'
-                        onSubmitEditing={this.handleAdd}
-                        onChangeText={this.handleChangeText}
-                    />
+                <Content contentContainerStyle={{ justifyContent: 'space-between' }}>
+                    <View>
+                        <InputGroup
+                            borderType="underline"
+                            style={{ flex: 0.9 }}
+                        >
+                            <Input
+                                value={value}
+                                placeholder='Insert a to do'
+                                onSubmitEditing={this.handleAdd}
+                                onChangeText={this.handleChangeText}
+                            />
+                        </InputGroup>
+                    </View>
                     <List
-                        dataArray={items.reverse()}
+                        dataArray={items}
                         renderRow={this.renderItem}
                     />
                 </Content>
+                <Footer>
+                    <FooterTab>
+                        <Button>
+                            <Text>All</Text>
+                        </Button>
+                    </FooterTab>
+                    <FooterTab>
+                        <Button>
+                            <Text>Completed</Text>
+                        </Button>
+                    </FooterTab>
+                    <FooterTab>
+                        <Button>
+                            <Text>Active</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>
             </Container>
         );
     }
@@ -53,22 +77,21 @@ export default class TodoApp extends Component {
 
     getPressHandler = item => {
         return () => {
-            let { items } = this.state;
+            const { items } = this.state;
 
-            const index = items.findIndex(it => it.key === item.key);
-            items[index] = item;
-
-            this.setState({ items });
+            this.setState({
+                items: items.filter(it => it.key !== item.key)
+            });
         }
     }
 
-    renderItem = ({ text, completed }) => (
+    renderItem = item => (
         <ListItem>
             <Left>
-                <CheckBox checked={completed}/>
+                <CheckBox onPress={this.getPressHandler(item)} checked={item.completed}/>
             </Left>
             <Text>
-                {text}
+                {item.text}
             </Text>
         </ListItem>
     )
