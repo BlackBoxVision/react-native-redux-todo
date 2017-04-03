@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { Container } from 'native-base';
 
-import Header from './components/Header';
-import Body from './components/Body';
-import Footer from './components/Footer';
+import Header from '../components/Header';
+import Body from '../components/Body';
+import Footer from '../components/Footer';
 
-import app from '../app.json';
+import app from '../../app.json';
 
-export default class TodoApp extends Component {
+export default class Todo extends Component {
     static propTypes = {
         toggle: PropTypes.func,
         remove: PropTypes.func,

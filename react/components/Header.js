@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Header, Title, Left } from 'native-base';
 
-export default class AppHeader extends Component {
+export default class TodoHeader extends Component {
     static propTypes = {
-        displayName: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired
     };
 
     render() {
@@ -11,7 +11,7 @@ export default class AppHeader extends Component {
             <Header>
                 <Left>
                     <Title>
-                        {this.props.displayName}
+                        {this.props.title}
                     </Title>
                 </Left>
             </Header>
