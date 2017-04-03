@@ -2,11 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { Container } from 'native-base';
 import { connect } from 'react-redux';
 
-import Header from '../components/base/Header';
-import Body from '../components/base/Body';
-import Footer from '../components/base/Footer';
+import Header from '../components/Header';
+import Body from '../components/Body';
+import Footer from '../components/Footer';
 
 import * as todoActions from '../redux/todo/actions';
+import * as todoSelectors from '../redux/todo/selector';
 
 import app from '../../app.json';
 
@@ -55,7 +56,7 @@ class AppContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    items: state.todo.items,
+    items: todoSelectors.getItemsByFilter(state),
     text: state.todo.value,
     filter: state.todo.filter
 });
