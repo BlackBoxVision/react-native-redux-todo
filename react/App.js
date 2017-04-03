@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Container, Content, List, ListItem, Text, CheckBox, Left, Input, InputGroup, Footer, FooterTab, Button } from 'native-base';
+import { Container, Content, List, ListItem, Text, CheckBox, Left, Input, InputGroup, Footer, FooterTab, Button, Body, Right, Icon } from 'native-base';
 
 import Header from './Header';
 import config from '../app.json';
@@ -63,25 +63,23 @@ export default class TodoApp extends Component {
     handleAdd = () => {
         let { items, value } = this.state;
 
-        items = [
-            ...items,
-            {
-                key: Date.now(),
-                text: value,
-                completed: false
-            }
-        ]
+        items.push({
+            key: Date.now(),
+            text: value,
+            completed: false
+        })
 
         this.setState({ items, value: '' });
     }
 
     getPressHandler = item => {
         return () => {
-            const { items } = this.state;
+            let { items } = this.state;
 
-            this.setState({
-                items: items.filter(it => it.key !== item.key)
-            });
+            const index = items.findIndex(it => it.key === item.key);
+            items[index].completed = true;
+
+            this.setState({ items });
         }
     }
 
@@ -90,9 +88,14 @@ export default class TodoApp extends Component {
             <Left>
                 <CheckBox onPress={this.getPressHandler(item)} checked={item.completed}/>
             </Left>
-            <Text>
-                {item.text}
-            </Text>
+            <Body>
+                <Text>
+                    {item.text}
+                </Text>
+            </Body>
+            <Right>
+                <Icon name="md-trash"/>
+            </Right>
         </ListItem>
     )
 }
