@@ -6,22 +6,22 @@ import Header from '../components/Header';
 import Body from '../components/Body';
 import Footer from '../components/Footer';
 
-import * as todoActions from '../redux/todo/actions';
-import * as todoSelectors from '../redux/todo/selector';
+import bind from '../redux/todo/bindings';
 
 import app from '../../app.json';
 
-class AppContainer extends Component {
+@connect(bind.mapStateToProps, bind.mapDispatchToProps)
+export default class AppContainer extends Component {
     static propTypes = {
-        items: PropTypes.array,
-        text: PropTypes.string,
-        filter: PropTypes.string,
-        addTodo: PropTypes.func,
-        toggleTodo: PropTypes.func,
-        removeTodo: PropTypes.func,
-        changeValue: PropTypes.func,
-        clearValue: PropTypes.func,
-        visibilityFilter: PropTypes.func
+        items: PropTypes.array.isRequired,
+        text: PropTypes.string.isRequired,
+        filter: PropTypes.string.isRequired,
+        addTodo: PropTypes.func.isRequired,
+        toggleTodo: PropTypes.func.isRequired,
+        removeTodo: PropTypes.func.isRequired,
+        changeValue: PropTypes.func.isRequired,
+        clearValue: PropTypes.func.isRequired,
+        visibilityFilter: PropTypes.func.isRequired
     };
 
     render() {
@@ -54,20 +54,3 @@ class AppContainer extends Component {
         this.props.clearValue();
     }
 }
-
-const mapStateToProps = state => ({
-    items: todoSelectors.getItemsByFilter(state),
-    text: state.todo.value,
-    filter: state.todo.filter
-});
-
-const mapDispatchToProps = dispatch => ({
-    addTodo: todo => dispatch(todoActions.addTodo(todo)),
-    toggleTodo: id => dispatch(todoActions.toggleTodo(id)),
-    removeTodo: id => dispatch(todoActions.removeTodo(id)),
-    visibilityFilter: filter => dispatch(todoActions.visibilityFilter(filter)),
-    changeValue: text => dispatch(todoActions.changeValue(text)),
-    clearValue: () => dispatch(todoActions.clearValue())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
