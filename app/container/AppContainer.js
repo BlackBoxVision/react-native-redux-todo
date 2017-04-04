@@ -19,8 +19,6 @@ export default class AppContainer extends Component {
         actions: PropTypes.objectOf(PropTypes.func)
     };
 
-
-
     render() {
         return (
             <Container>
