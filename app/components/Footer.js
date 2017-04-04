@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Platform } from 'react-native';
 import { Text, Footer, FooterTab, Button } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -34,9 +35,9 @@ export default class TodoFooter extends Component {
     }
 
     renderFooterTab = (tab, index) => (
-        <FooterTab>
+        <FooterTab key={`tab-key-${index}`}>
             <Button onPress={() => this.props.changeFilter(tab.filter)}>
-                <Icon name={tab.icon} size={20} color="#FFFFFF"/>
+                <Icon name={tab.icon} size={20} color={Platform.OS === 'ios' ? '#757575' : '#FFFFFF'}/>
                 <Text>{tab.filter}</Text>
             </Button>
         </FooterTab>

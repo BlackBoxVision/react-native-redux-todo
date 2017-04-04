@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { ListItem, Text, CheckBox, Left, Body, Right, Icon } from 'native-base';
+import { ListItem, Text, CheckBox, Left, Body, Right } from 'native-base';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class TodoItem extends Component {
     static propTypes = {
@@ -23,7 +24,9 @@ export default class TodoItem extends Component {
                 <Right>
                     <Icon
                         onPress={this.props.remove}
-                        name="md-trash"
+                        name="delete"
+                        size={20}
+                        color="#757575"
                     />
                 </Right>
             </ListItem>
