@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { Container } from 'native-base';
+import { Container, Fab } from 'native-base';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Body from '../components/Body';
 import Footer from '../components/Footer';
@@ -42,6 +43,18 @@ export default class TodoListScreen extends Component {
                     removeTodo={this.props.actions.removeTodo}
                     changeValue={this.props.actions.changeValue}
                 />
+                <Fab
+                    active={false}
+                    direction="right"
+                    position="bottomRight"
+                    containerStyle={{
+                        bottom: 70
+                    }}
+                    style={{
+                        backgroundColor: '#009688'
+                    }}>
+                    <Icon name="add" size={20} color="#FFFFFF"/>
+                </Fab>
                 <Footer changeFilter={this.props.actions.visibilityFilter}/>
             </Container>
         );

@@ -14,6 +14,7 @@ export default class TodoItem extends Component {
             <ListItem>
                 <Left>
                     <CheckBox
+                        color="#009688"
                         onPress={this.props.toggle}
                         checked={this.props.item.completed}
                     />
