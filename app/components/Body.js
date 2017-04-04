@@ -9,10 +9,10 @@ export default class TodoBody extends Component {
         filter: PropTypes.string.isRequired,
         items: PropTypes.array.isRequired,
         value: PropTypes.string.isRequired,
-        onSubmit: PropTypes.func.isRequired,
-        onChangeText: PropTypes.func.isRequired,
-        onToggle: PropTypes.func.isRequired,
-        onRemove: PropTypes.func.isRequired
+        submitTodo: PropTypes.func.isRequired,
+        toggleTodo: PropTypes.func.isRequired,
+        removeTodo: PropTypes.func.isRequired,
+        changeValue: PropTypes.func.isRequired
     };
 
     render() {
@@ -26,8 +26,8 @@ export default class TodoBody extends Component {
                         <Input
                             value={this.props.value}
                             placeholder='Insert a to do'
-                            onSubmitEditing={this.props.onSubmit}
-                            onChangeText={this.props.onChangeText}
+                            onSubmitEditing={this.props.submitTodo}
+                            onChangeText={this.props.changeValue}
                         />
                     </InputGroup>
                 </Form>
@@ -41,8 +41,8 @@ export default class TodoBody extends Component {
         <TodoItem
             item={item}
             key={`todo-${item.key}`}
-            toggle={() => this.props.onToggle(item.key)}
-            remove={() => this.props.onRemove(item.key)}
+            toggle={() => this.props.toggleTodo(item.key)}
+            remove={() => this.props.removeTodo(item.key)}
         />
     );
 }

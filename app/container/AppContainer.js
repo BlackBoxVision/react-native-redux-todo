@@ -14,7 +14,7 @@ import app from '../../app.json';
 export default class AppContainer extends Component {
     static propTypes = {
         items: PropTypes.array.isRequired,
-        text: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
         filter: PropTypes.string.isRequired,
         actions: PropTypes.objectOf(PropTypes.func)
     };
@@ -25,27 +25,37 @@ export default class AppContainer extends Component {
                 <Header title={app.displayName}/>
                 <Body
                     items={this.props.items}
-                    value={this.props.text}
+                    value={this.props.value}
                     filter={this.props.filter}
-                    onSubmit={this.submitTodo}
-                    onToggle={this.props.actions.toggleTodo}
-                    onRemove={this.props.actions.removeTodo}
-                    onChangeText={this.props.actions.changeValue}
+                    submitTodo={this.submitTodo}
+                    toggleTodo={this.props.actions.toggleTodo}
+                    removeTodo={this.props.actions.removeTodo}
+                    changeValue={this.props.actions.changeValue}
                 />
-                <Footer onFilterChange={this.props.actions.visibilityFilter}/>
+                <Footer changeFilter={this.changeFilter}/>
             </Container>
         );
     }
 
     submitTodo = () => {
-        if (this.props.text.length === 0) return;
+        if (this.props.value.length) {
+            return;
+        }
 
         this.props.actions.addTodo({
             key: Date.now(),
-            text: this.props.text,
+            text: this.props.value,
             completed: false
         });
 
         this.props.actions.clearValue();
-    }
+    };
+
+    changeFilter = filter => {
+        if (this.props.items.length) {
+            return;
+        }
+
+        this.props.actions.visibilityFilter(filter);
+    };
 }

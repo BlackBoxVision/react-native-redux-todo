@@ -6,7 +6,7 @@ import * as TodoSelectors from './selector';
 export default {
     mapStateToProps: state => ({
         items: TodoSelectors.getVisibleTodos(state),
-        text: state.todo.value,
+        value: state.todo.value,
         filter: state.todo.filter
     }),
     mapDispatchToProps: dispatch => ({
