@@ -55,7 +55,10 @@ export default class TodoListScreen extends Component {
                     }}>
                     <Icon name="add" size={20} color="#FFFFFF"/>
                 </Fab>
-                <Footer changeFilter={this.props.actions.visibilityFilter}/>
+                <Footer
+                    filter={this.props.filter}
+                    changeFilter={this.props.actions.visibilityFilter}
+                />
             </Container>
         );
     }
