@@ -32,7 +32,7 @@ export default class AppContainer extends Component {
                     removeTodo={this.props.actions.removeTodo}
                     changeValue={this.props.actions.changeValue}
                 />
-                <Footer changeFilter={this.changeFilter}/>
+                <Footer changeFilter={this.props.actions.visibilityFilter}/>
             </Container>
         );
     }
@@ -49,13 +49,5 @@ export default class AppContainer extends Component {
         });
 
         this.props.actions.clearValue();
-    };
-
-    changeFilter = filter => {
-        if (this.props.items.length) {
-            return;
-        }
-
-        this.props.actions.visibilityFilter(filter);
     };
 }
