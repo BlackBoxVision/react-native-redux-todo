@@ -4,33 +4,17 @@ import { Content, List, Input, InputGroup, Form } from 'native-base';
 import EmptyView from './EmptyView';
 import TodoItem from './TodoItem';
 
-export default class TodoBody extends Component {
+export default class Todos extends Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
         items: PropTypes.array.isRequired,
-        value: PropTypes.string.isRequired,
-        submitTodo: PropTypes.func.isRequired,
         toggleTodo: PropTypes.func.isRequired,
-        removeTodo: PropTypes.func.isRequired,
-        changeValue: PropTypes.func.isRequired
+        removeTodo: PropTypes.func.isRequired
     };
 
     render() {
         return (
             <Content contentContainerStyle={{ justifyContent: 'space-between' }}>
-                <Form>
-                    <InputGroup
-                        borderType="underline"
-                        style={{ flex: 0.9 }}
-                    >
-                        <Input
-                            value={this.props.value}
-                            placeholder='Insert a to do'
-                            onSubmitEditing={this.props.submitTodo}
-                            onChangeText={this.props.changeValue}
-                        />
-                    </InputGroup>
-                </Form>
                 {!this.props.items.length && <EmptyView message={`There are no ${this.props.filter} todos`}/>}
                 {this.props.items.length > 0 && <List dataArray={this.props.items} renderRow={this.renderItem}/>}
             </Content>
