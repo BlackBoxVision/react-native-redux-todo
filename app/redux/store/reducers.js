@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import todo from '../todo/reducer';
+import todo from '../logic/todo/reducer';
+import navigate from '../logic/navigate/reducer'
 
 export default combineReducers({
-    todo
+    todo,
+    navigate
 });
