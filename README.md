@@ -1,2 +1,2 @@
-# todoApp
-My first mobile app with React Native, for learning purposes only.
+# React Native Redux Todo
+> Showcase App for React Native + Redux
