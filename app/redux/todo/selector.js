@@ -1,17 +1,18 @@
-const Filters = {
-    ALL: 'all',
-    ACTIVE: 'active',
-    COMPLETE: 'complete'
-};
+import { createSelector } from 'reselect';
 
-export function getByFilter({ todo: { items, filter } }) {
+const getFilter = state => state.todo.filter;
+const getTodos = state => state.todo.items;
+
+function getByFilter(filter, items) {
     switch (filter) {
-        case Filters.ACTIVE:
-            return items.filter(item => !item.completed);
-        case Filters.COMPLETE:
+        case 'complete':
             return items.filter(item => item.completed);
-        case Filters.ALL:
+        case 'active':
+            return items.filter(item => !item.completed);
+        case 'all':
         default:
             return items;
     }
 }
+
+export const getVisibleTodos = createSelector([getFilter, getTodos], getByFilter);

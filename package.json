@@ -18,7 +18,8 @@
 		"redux-logger": "^3.0.1",
 		"redux-storage": "^4.1.2",
 		"redux-storage-engine-reactnativeasyncstorage": "^1.0.5",
-		"redux-thunk": "^2.2.0"
+		"redux-thunk": "^2.2.0",
+		"reselect": "^3.0.0"
 	},
 	"devDependencies": {
 		"babel-jest": "19.0.0",
