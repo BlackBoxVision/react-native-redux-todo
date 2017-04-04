@@ -19,6 +19,8 @@ export default class AppContainer extends Component {
         actions: PropTypes.objectOf(PropTypes.func)
     };
 
+
+
     render() {
         return (
             <Container>
@@ -38,7 +40,7 @@ export default class AppContainer extends Component {
     }
 
     submitTodo = () => {
-        if (this.props.value.length) {
+        if (this.props.value.length === 0) {
             return;
         }
 

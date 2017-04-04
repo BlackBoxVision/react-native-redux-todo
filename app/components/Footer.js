@@ -4,28 +4,41 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class TodoFooter extends Component {
     static propTypes = {
-        changeFilter: PropTypes.func
+        changeFilter: PropTypes.func,
+        tabs: PropTypes.arrayOf(PropTypes.object)
+    };
+
+    static defaultProps = {
+        tabs: [
+            {
+                filter: 'all',
+                icon: 'assignment'
+            },
+            {
+                filter: 'complete',
+                icon: 'assignment-turned-in'
+            },
+            {
+                filter: 'active',
+                icon: 'assignment-late'
+            }
+        ]
     };
 
     render() {
         return (
             <Footer>
-                <FooterTab>
-                    <Button onPress={() => this.props.changeFilter('all')}>
-                        <Icon name='assignment' size={20} color="#FFFFFF"/>
-                    </Button>
-                </FooterTab>
-                <FooterTab>
-                    <Button onPress={() => this.props.changeFilter('complete')}>
-                        <Icon name='assignment-turned-in' size={20} color="#FFFFFF"/>
-                    </Button>
-                </FooterTab>
-                <FooterTab>
-                    <Button onPress={() => this.props.changeFilter('active')}>
-                        <Icon name='assignment-late' size={20} color="#FFFFFF"/>
-                    </Button>
-                </FooterTab>
+                {this.props.tabs.map(this.renderFooterTab)}
             </Footer>
         )
     }
+
+    renderFooterTab = (tab, index) => (
+        <FooterTab>
+            <Button onPress={() => this.props.changeFilter(tab.filter)}>
+                <Icon name={tab.icon} size={20} color="#FFFFFF"/>
+                <Text>{tab.filter}</Text>
+            </Button>
+        </FooterTab>
+    )
 }
