@@ -9,9 +9,9 @@
     hoist-non-react-statics "^1.2.0"
     lodash "^4.15.0"
 
-"@shoutem/theme@https://github.com/GeekyAnts/theme#caching":
+"@shoutem/theme@git+https://github.com/GeekyAnts/theme.git#caching":
   version "0.8.8"
-  resolved "https://github.com/GeekyAnts/theme#7c8d0ab19eb452c8c465bbd8e27f8cdc32fddba5"
+  resolved "git+https://github.com/GeekyAnts/theme.git#7c8d0ab19eb452c8c465bbd8e27f8cdc32fddba5"
   dependencies:
     hoist-non-react-statics "^1.0.5"
     lodash "^4.10.1"

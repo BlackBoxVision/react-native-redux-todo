@@ -12,7 +12,7 @@ export default class EmptyView extends Component {
                 flex: 1,
                 justifyContent: 'center',
                 alignItems: 'center',
-                paddingTop: 50
+                paddingTop: 200
             }}>
                 <Text>
                     {this.props.message}
