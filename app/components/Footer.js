@@ -29,7 +29,7 @@ export default class TodoFooter extends Component {
 
     render() {
         return (
-            <Footer style={{ backgroundColor: '#3F51B5' }}>
+            <Footer style={{ backgroundColor: '#673AB7' }}>
                 {this.props.tabs.map(this.renderFooterTab)}
             </Footer>
         )

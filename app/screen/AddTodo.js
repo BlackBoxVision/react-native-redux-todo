@@ -16,7 +16,7 @@ export default class AddTodo extends Component {
         header: {
             tintColor: '#FFFFFF',
             style: {
-                backgroundColor: '#3F51B5'
+                backgroundColor: '#673AB7'
             },
             titleStyle: {
                 color: '#FFFFFf'

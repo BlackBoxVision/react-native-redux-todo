@@ -19,7 +19,7 @@ export default class EmptyView extends Component {
                 paddingTop: (height/2) - 100
             }}>
                 <Icon name={this.props.name} size={60} color='#757575'/>
-                <Text>
+                <Text style={{ color: '#424242' }}>
                     {this.props.message}
                 </Text>
             </View>

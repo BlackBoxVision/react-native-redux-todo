@@ -24,7 +24,7 @@ export default class TodoList extends Component {
         header: {
             tintColor: '#FFFFFF',
             style: {
-                backgroundColor: '#3F51B5'
+                backgroundColor: '#673AB7'
             },
             titleStyle: {
                 color: '#FFFFFf'
@@ -50,7 +50,7 @@ export default class TodoList extends Component {
                         bottom: 70
                     }}
                     style={{
-                        backgroundColor: '#009688'
+                        backgroundColor: '#E91E63'
                     }}>
                     <Icon name="add" size={20} color="#FFFFFF"/>
                 </Fab>
