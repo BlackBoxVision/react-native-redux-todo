@@ -26,5 +26,5 @@ export default class FooterItem extends Component {
         );
     }
 
-    getColor = filter => this.props.currentFilter === filter ? '#1DE9B6' : Platform.OS === 'ios' ? '#757575' : '#FFFFFF';
+    getColor = filter => this.props.currentFilter === filter ? '#1DE9B6' : '#FFFFFF';
 }
