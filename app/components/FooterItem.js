@@ -15,7 +15,7 @@ export default class FooterItem extends Component {
 
     render() {
         return (
-            <FooterTab>
+            <FooterTab style={{ backgroundColor: '#673AB7' }}>
                 <Button onPress={this.props.changeFilter}>
                     <Icon name={this.props.icon} size={20} color={this.getColor(this.props.filter)}/>
                     <Text style={{ color: this.getColor(this.props.filter) }}>
@@ -26,5 +26,5 @@ export default class FooterItem extends Component {
         );
     }
 
-    getColor = filter => this.props.currentFilter === filter ? '#FF80AB' : '#FFFFFF';
+    getColor = filter => this.props.currentFilter === filter ? '#F8BBD0' : '#FFFFFF';
 }
