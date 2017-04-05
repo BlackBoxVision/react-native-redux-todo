@@ -45,7 +45,7 @@ export default class TodoList extends Component {
                     active={false}
                     direction="right"
                     position="bottomRight"
-                    onPress={this.navigate}
+                    onPress={this.addTodo}
                     containerStyle={{
                         bottom: 70
                     }}
@@ -62,5 +62,8 @@ export default class TodoList extends Component {
         );
     }
 
-    navigate = () => this.props.navigation.navigate('AddTodo');
+    addTodo = () => {
+        this.props.navigation.navigate('AddTodo');
+        this.props.actions.visibilityFilter('all');
+    };
 }

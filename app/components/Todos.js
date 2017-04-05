@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Content, List, Input, InputGroup, Form } from 'native-base';
+import { Content, List } from 'native-base';
 
 import EmptyView from './EmptyView';
 import TodoItem from './TodoItem';
@@ -13,10 +13,13 @@ export default class Todos extends Component {
     };
 
     render() {
+        const { items, filter } = this.props;
+        const message = `There are no ${filter === 'all' ? '' : filter} todos`;
+
         return (
             <Content contentContainerStyle={{ justifyContent: 'space-between' }}>
-                {!this.props.items.length && <EmptyView message={`There are no ${this.props.filter} todos`}/>}
-                {this.props.items.length > 0 && <List dataArray={this.props.items} renderRow={this.renderItem}/>}
+                {!items.length && <EmptyView name={this.getName(filter)} message={message}/>}
+                {!!items.length && <List dataArray={items} renderRow={this.renderItem}/>}
             </Content>
         )
     }
@@ -29,4 +32,16 @@ export default class Todos extends Component {
             remove={() => this.props.removeTodo(item.key)}
         />
     );
+
+    getName = filter => {
+        switch (filter) {
+            case 'complete':
+                return 'assignment-turned-in';
+            case 'active':
+                return 'assignment-late';
+            case 'all':
+            default:
+                return 'assignment';
+        }
+    }
 }
