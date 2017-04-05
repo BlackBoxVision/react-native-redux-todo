@@ -29,7 +29,7 @@ export default function configureStore(onComplete = () => {}) {
                 //logger
             )//,
             //devTools(),
-        ),
+        )
     );
 
     // if (isDebuggingInChrome) {
@@ -37,6 +37,7 @@ export default function configureStore(onComplete = () => {}) {
     // }
 
     const load = storage.createLoader(engine);
+
     load(store)
     .then(onComplete)
     .catch(() => console.log('Failed to load previous state'));

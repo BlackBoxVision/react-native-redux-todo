@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { Container, Content, Form, InputGroup, Input } from 'native-base';
+import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import bind from '../redux/logic/todo/bindings';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
+@translate()
 export default class AddTodo extends Component {
     static propTypes = {
         value: PropTypes.string.isRequired,
@@ -35,7 +37,7 @@ export default class AddTodo extends Component {
                         >
                             <Input
                                 value={this.props.value}
-                                placeholder='Insert a to do'
+                                placeholder={this.props.t('add-todo')}
                                 onSubmitEditing={this.submitTodo}
                                 onChangeText={this.props.actions.changeValue}
                             />

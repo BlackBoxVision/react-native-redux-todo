@@ -7,26 +7,20 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        case TodoActions.ADD_TODO: {
+    const { type, payload } = action;
+    const { items } = state;
+
+    switch (type) {
+        case TodoActions.ADD_TODO:
+            const addedItems = items.concat(payload.todo);
+
             return {
                 ...state,
-                items: [
-                    ...state.items,
-                    action.payload.todo
-                ]
+                items: addedItems
             };
-        }
 
         case TodoActions.TOGGLE_TODO:
-            const newItems = [...state.items];
-            const index = state.items.findIndex(it => it.key === action.payload.id)
-            const item = state.items.find(it => it.key === action.payload.id);
-
-            newItems[index] = {
-                ...item,
-                completed: !item.completed
-            };
+            const newItems = items.map(it => it.key !== payload.id ? it : { ...it, completed: !it.completed });
 
             return {
                 ...state,
@@ -34,22 +28,24 @@ export default function reducer(state = initialState, action) {
             };
 
         case TodoActions.REMOVE_TODO:
+            const filteredItems = items.filter(it => it.key !== payload.id);
+
             return {
                 ...state,
-                items: [...state.items].filter(it => it.key !== action.payload.id)
+                items: filteredItems
             };
 
         case TodoActions.VISIBILITY_FILTER:
             return {
                 ...state,
-                filter: action.payload.filter
+                filter: payload.filter
             };
 
         case TodoActions.CHANGE_VALUE:
         case TodoActions.CLEAR_VALUE:
             return {
                 ...state,
-                value: action.payload.value
+                value: payload.value
             };
 
         default:
