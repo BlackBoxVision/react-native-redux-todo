@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Footer } from 'native-base';
 import { translate } from 'react-i18next';
 
-import iconify from '../../../common/iconify';
+import iconify from '../../../common/hoc/iconify';
 
 import FooterItem from './FooterItem';
 

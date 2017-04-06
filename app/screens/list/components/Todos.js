@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Content, List } from 'native-base';
 import { translate } from 'react-i18next';
 
-import iconify from '../../../common/iconify';
+import iconify from '../../../common/hoc/iconify';
 
 import EmptyView from './EmptyView';
 import TodoItem from './TodoItem';
