@@ -21,8 +21,8 @@ export default class FooterItem extends Component {
     };
 
     render() {
-        const { props } = this;
-        const styles = this.getStyles(props);
+        const { props, getStyles, getColor, getMessage } = this;
+        const styles = getStyles(props);
 
         return (
             <FooterTab style={props.style}>
@@ -30,17 +30,17 @@ export default class FooterItem extends Component {
                     <Icon
                         name={props.icon}
                         size={props.size}
-                        color={this.getColor(props)}
+                        color={getColor(props)}
                     />
                     <Text style={styles.text}>
-                        {this.getMessage()}
+                        {getMessage()}
                     </Text>
                 </Button>
             </FooterTab>
         );
     }
 
-    getColor = (props) => props.currentFilter === props.filter ? '#F8BBD0' : '#FFFFFF';
+    getColor = props => props.currentFilter === props.filter ? '#F8BBD0' : '#FFFFFF';
 
     getMessage = () => Platform.OS === 'ios' ? capitalize(this.props.message) : this.props.message.toUpperCase();
 

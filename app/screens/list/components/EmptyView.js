@@ -19,8 +19,8 @@ export default class EmptyView extends Component {
     };
 
     render() {
-        const { props } = this;
-        const styles = this.getStyles(props);
+        const { props, getStyles } = this;
+        const styles = getStyles(props);
 
         return (
             <View style={styles.container}>

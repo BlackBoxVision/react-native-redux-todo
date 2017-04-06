@@ -23,8 +23,8 @@ export default class AddTodo extends Component {
     };
 
     render() {
-        const { props } = this;
-        const styles = this.getStyles(props);
+        const { props, getStyles, submitTodo } = this;
+        const styles = getStyles(props);
 
         return (
             <Container>
@@ -37,7 +37,7 @@ export default class AddTodo extends Component {
                             <Input
                                 value={props.value}
                                 placeholder={props.t('add-todo')}
-                                onSubmitEditing={this.submitTodo}
+                                onSubmitEditing={submitTodo}
                                 onChangeText={props.actions.changeValue}
                             />
                         </InputGroup>
@@ -46,6 +46,15 @@ export default class AddTodo extends Component {
             </Container>
         )
     }
+
+    getStyles = (props) => ({
+        content: {
+            justifyContent: 'space-between'
+        },
+        inputGroup: {
+            flex: 0.9
+        }
+    });
 
     submitTodo = () => {
         if (this.props.value.length === 0) {
@@ -61,13 +70,4 @@ export default class AddTodo extends Component {
         this.props.actions.clearValue();
         this.props.navigation.goBack();
     };
-
-    getStyles = (props) => ({
-        content: {
-            justifyContent: 'space-between'
-        },
-        inputGroup: {
-            flex: 0.9
-        }
-    });
 }

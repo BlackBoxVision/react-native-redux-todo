@@ -23,15 +23,21 @@ export default class TodoFooter extends Component {
     };
 
     render() {
-        const { props } = this;
-        const styles = this.getStyles(props);
+        const { props, getStyles, getItemRenderer } = this;
+        const styles = getStyles(props);
 
         return (
             <Footer style={styles.footer}>
-                {props.tabs.map(this.getItemRenderer(props, styles))}
+                {props.tabs.map(getItemRenderer(props, styles))}
             </Footer>
         )
     }
+
+    getStyles = (props) => ({
+        footer: {
+            backgroundColor: props.backgroundColor
+        }
+    });
 
     getItemRenderer = (props, styles) => (item, index) => (
         <FooterItem
@@ -44,10 +50,4 @@ export default class TodoFooter extends Component {
             style={styles.footer}
         />
     );
-
-    getStyles = (props) => ({
-        footer: {
-            backgroundColor: props.backgroundColor
-        }
-    });
 }

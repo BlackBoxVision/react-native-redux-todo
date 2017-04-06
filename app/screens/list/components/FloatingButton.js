@@ -26,7 +26,8 @@ export default class FloatingButton extends Component {
     }
 
     render() {
-        const styles = this.getStyles();
+        const { props, getStyles } = this;
+        const styles = getStyles(props);
 
         return (
             <Fab
@@ -47,7 +48,7 @@ export default class FloatingButton extends Component {
         )
     }
 
-    getStyles = () => ({
+    getStyles = (props) => ({
         fabContainer: {
             bottom: 70
         },

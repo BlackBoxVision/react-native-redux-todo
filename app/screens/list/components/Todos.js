@@ -20,16 +20,22 @@ export default class Todos extends Component {
     };
 
     render() {
-        const { props } = this;
-        const styles = this.getStyles(props);
+        const { props, getStyles, getItemRenderer } = this;
+        const styles = getStyles(props);
 
         return (
             <Content contentContainerStyle={styles.content}>
                 {!props.items.length && <EmptyView iconName={props.getIcon(`filter-${props.filter}`)} text={props.t(`message-${props.filter}`)}/>}
-                {!!props.items.length && <List dataArray={props.items} renderRow={this.getItemRenderer(props, styles)}/>}
+                {!!props.items.length && <List dataArray={props.items} renderRow={getItemRenderer(props, styles)}/>}
             </Content>
         )
     }
+
+    getStyles = (props) => ({
+        content: {
+            justifyContent: 'space-between'
+        }
+    });
 
     getItemRenderer = (props, styles) => ({ key, text, completed }, index) => (
         <TodoItem
@@ -40,10 +46,4 @@ export default class Todos extends Component {
             remove={() => props.removeTodo(key)}
         />
     );
-
-    getStyles = (props) => ({
-        content: {
-            justifyContent: 'space-between'
-        }
-    });
 }

@@ -27,7 +27,7 @@ export default class TodoList extends Component {
     };
 
     render() {
-        const { props } = this;
+        const { props, addTodo } = this;
 
         return (
             <Container>
@@ -37,7 +37,7 @@ export default class TodoList extends Component {
                     toggleTodo={props.actions.toggleTodo}
                     removeTodo={props.actions.removeTodo}
                 />
-                <FloatingButton onPress={this.addTodo}/>
+                <FloatingButton onPress={addTodo}/>
                 <Footer
                     filter={props.filter}
                     changeFilter={props.actions.visibilityFilter}
