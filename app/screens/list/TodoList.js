@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Todos from './components/Todos';
 import Footer from './components/Footer';
-import FloatingButton from './components/FloatingButton';
+import FloatingButton from '../../common/FloatingButton';
 
 import bind from '../../redux/logic/todo/bindings';
 import app from '../../../app.json';

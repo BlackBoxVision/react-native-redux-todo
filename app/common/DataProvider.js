@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, Children } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 
@@ -31,7 +31,7 @@ export default class DataProvider extends Component {
         return (
             <Provider store={this.props.store}>
                 <I18nextProvider i18n={this.props.i18n}>
-                    {this.props.children}
+                    {Children.only(this.props.children)}
                 </I18nextProvider>
             </Provider>
         );

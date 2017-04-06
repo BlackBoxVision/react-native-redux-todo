@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 
 import iconify from '../../../common/hoc/iconify';
 
-import EmptyView from './EmptyView';
+import EmptyView from '../../../common/EmptyView';
 import TodoItem from './TodoItem';
 
 @translate()
