@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { Container, Content, Form, InputGroup, Input } from 'native-base';
+import { Container, Content, Form, InputGroup, Input, Header, Body, Title, Button, Left, Icon, Right } from 'native-base';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import bind from '../../redux/logic/todo/bindings';
-
-import headerStyles from '../../config/header';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
 @translate()
@@ -17,17 +15,25 @@ export default class AddTodo extends Component {
         actions: PropTypes.objectOf(PropTypes.func).isRequired
     }
 
-    static navigationOptions = {
-        title: 'Add Todo',
-        header: headerStyles
-    };
-
     render() {
-        const { props, getStyles, submitTodo } = this;
+        const { props, getStyles, goBack, submitTodo } = this;
         const styles = getStyles(props);
 
         return (
             <Container>
+                <Header style={styles.header}>
+                    <Left>
+                        <Button onPress={goBack(props)} transparent>
+                            <Icon name='arrow-back' style={styles.icon}/>
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title style={styles.title}>
+                            {props.t('title')}
+                        </Title>
+                    </Body>
+                    <Right />
+                </Header>
                 <Content contentContainerStyle={styles.content}>
                     <Form>
                         <InputGroup
@@ -53,8 +59,19 @@ export default class AddTodo extends Component {
         },
         inputGroup: {
             flex: 0.9
+        },
+        header: {
+            backgroundColor: '#673AB7'
+        },
+        title: {
+            color: '#FFFFFF'
+        },
+        icon: {
+            color: '#FFFFFF'
         }
     });
+
+    goBack = props => _ => props.navigation.goBack();
 
     submitTodo = () => {
         if (this.props.value.length === 0) {

@@ -3,11 +3,17 @@ import { StackNavigator } from 'react-navigation';
 import TodoList from '../screens/list/TodoList';
 import AddTodo from '../screens/add/AddTodo';
 
-export default StackNavigator({
+const config = {
+    headerMode: 'none'
+};
+
+const routes = {
     Home: {
         screen: TodoList
     },
     AddTodo: {
         screen: AddTodo
     }
-});
+};
+
+export default StackNavigator(routes, config);

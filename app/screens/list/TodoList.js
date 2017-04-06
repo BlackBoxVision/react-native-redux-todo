@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Container } from 'native-base';
+import { Container, Header, Left, Title } from 'native-base';
 import { connect } from 'react-redux';
 
 import Todos from './components/Todos';
@@ -7,8 +7,6 @@ import Footer from './components/Footer';
 import FloatingButton from './components/FloatingButton';
 
 import bind from '../../redux/logic/todo/bindings';
-
-import headerStyles from '../../config/header';
 import app from '../../../app.json';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
@@ -21,16 +19,19 @@ export default class TodoList extends Component {
         actions: PropTypes.objectOf(PropTypes.func).isRequired
     };
 
-    static navigationOptions = {
-        title: app.displayName,
-        header: headerStyles
-    };
-
     render() {
-        const { props, addTodo } = this;
+        const { props, getStyles, addTodo } = this;
+        const styles = getStyles(props);
 
         return (
             <Container>
+                <Header style={styles.header}>
+                    <Left>
+                        <Title style={styles.title}>
+                            {app.displayName}
+                        </Title>
+                    </Left>
+                </Header>
                 <Todos
                     items={props.items}
                     filter={props.filter}
@@ -45,6 +46,15 @@ export default class TodoList extends Component {
             </Container>
         );
     }
+
+    getStyles = (props) => ({
+        header: {
+            backgroundColor: '#673AB7'
+        },
+        title: {
+            color: '#FFFFFF'
+        }
+    });
 
     addTodo = () => {
         this.props.navigation.navigate('AddTodo');
