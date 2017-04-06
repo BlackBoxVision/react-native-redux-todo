@@ -5,7 +5,10 @@
             "complete": "complete",
             "active": "active",
             "add-todo": "Insert a to do",
-            "title": "Add Todo"
+            "title": "Add Todo",
+            "message-all": "There are no todos",
+            "message-active": "There are no active todos",
+            "message-complete": "There are no complete todos"
         }
     },
     "en-US": {
@@ -14,7 +17,10 @@
             "complete": "complete",
             "active": "active",
             "add-todo": "Insert a to do",
-            "title": "Add Todo"
+            "title": "Add Todo",
+            "message-all": "There are no todos",
+            "message-active": "There are no active todos",
+            "message-complete": "There are no complete todos"
         }
     },
     "es-US": {
@@ -23,7 +29,10 @@
             "complete": "completos",
             "active": "activos",
             "add-todo": "Añadir una tarea",
-            "title": "Añadir TODO"
+            "title": "Añadir TODO",
+            "message-all": "No hay ninguna tarea",
+            "message-active": "No hay ninguna tarea activa",
+            "message-complete": "No hay ninguna tarea completa"
         }
     },
     "es": {
@@ -32,7 +41,10 @@
             "complete": "completos",
             "active": "activos",
             "add-todo": "Añadir una tarea",
-            "title": "Añadir TODO"
+            "title": "Añadir TODO",
+            "message-all": "No hay ninguna tarea",
+            "message-active": "No hay ninguna tarea activa",
+            "message-complete": "No hay ninguna tarea completa"
         }
     }
 }

@@ -10,6 +10,7 @@ export default class FooterItem extends Component {
         changeFilter: PropTypes.func.isRequired,
         currentFilter: PropTypes.string.isRequired,
         filter: PropTypes.string.isRequired,
+        message: PropTypes.string.isRequired,
         icon: PropTypes.string.isRequired
     }
 
@@ -19,7 +20,7 @@ export default class FooterItem extends Component {
                 <Button onPress={this.props.changeFilter}>
                     <Icon name={this.props.icon} size={20} color={this.getColor(this.props.filter)}/>
                     <Text style={{ color: this.getColor(this.props.filter) }}>
-                        {Platform.OS === 'ios' ? capitalize(this.props.filter) : this.props.filter.toUpperCase()}
+                        {this.getMessage()}
                     </Text>
                 </Button>
             </FooterTab>
@@ -27,4 +28,6 @@ export default class FooterItem extends Component {
     }
 
     getColor = filter => this.props.currentFilter === filter ? '#F8BBD0' : '#FFFFFF';
+
+    getMessage = () => Platform.OS === 'ios' ? capitalize(this.props.message) : this.props.message.toUpperCase();
 }

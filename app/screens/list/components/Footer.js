@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Footer } from 'native-base';
+import { translate } from 'react-i18next';
 
 import FooterItem from './FooterItem';
 
+@translate()
 export default class TodoFooter extends Component {
     static propTypes = {
         filter: PropTypes.string,
@@ -40,6 +42,7 @@ export default class TodoFooter extends Component {
             key={`tab-key-${index}`}
             icon={tab.icon}
             filter={tab.filter}
+            message={this.props.t(tab.filter)}
             currentFilter={this.props.filter}
             changeFilter={() => this.props.changeFilter(tab.filter)}
         />

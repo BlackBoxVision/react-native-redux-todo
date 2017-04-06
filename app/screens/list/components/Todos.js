@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Content, List } from 'native-base';
+import { translate } from 'react-i18next';
 
 import EmptyView from './EmptyView';
 import TodoItem from './TodoItem';
 
+@translate()
 export default class Todos extends Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
@@ -14,7 +16,7 @@ export default class Todos extends Component {
 
     render() {
         const { items, filter } = this.props;
-        const message = `There are no ${filter === 'all' ? '' : filter} todos`;
+        const message = this.props.t(`message-${filter}`);
 
         return (
             <Content contentContainerStyle={{ justifyContent: 'space-between' }}>
