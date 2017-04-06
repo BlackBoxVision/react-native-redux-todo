@@ -17,12 +17,12 @@ export default class TodoFooter extends Component {
                 icon: 'assignment'
             },
             {
-                filter: 'complete',
-                icon: 'assignment-turned-in'
-            },
-            {
                 filter: 'active',
                 icon: 'assignment-late'
+            },
+            {
+                filter: 'complete',
+                icon: 'assignment-turned-in'
             }
         ]
     };

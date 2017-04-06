@@ -18,7 +18,7 @@ export default class EmptyView extends Component {
                 alignItems: 'center',
                 paddingTop: (height/2) - 100
             }}>
-                <Icon name={this.props.name} size={60} color='#757575'/>
+                <Icon name={this.props.name} size={60} color='#E91E63'/>
                 <Text style={{ color: '#424242' }}>
                     {this.props.message}
                 </Text>
