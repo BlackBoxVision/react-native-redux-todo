@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { Container, Fab } from 'native-base';
+import { Container } from 'native-base';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Todos from './components/Todos';
 import Footer from './components/Footer';
@@ -18,7 +17,8 @@ export default class TodoList extends Component {
         items: PropTypes.array.isRequired,
         value: PropTypes.string.isRequired,
         filter: PropTypes.string.isRequired,
-        actions: PropTypes.objectOf(PropTypes.func)
+        navigation: PropTypes.object.isRequired,
+        actions: PropTypes.objectOf(PropTypes.func).isRequired
     };
 
     static navigationOptions = {
@@ -27,18 +27,20 @@ export default class TodoList extends Component {
     };
 
     render() {
+        const { props } = this;
+
         return (
             <Container>
                 <Todos
-                    items={this.props.items}
-                    filter={this.props.filter}
-                    toggleTodo={this.props.actions.toggleTodo}
-                    removeTodo={this.props.actions.removeTodo}
+                    items={props.items}
+                    filter={props.filter}
+                    toggleTodo={props.actions.toggleTodo}
+                    removeTodo={props.actions.removeTodo}
                 />
                 <FloatingButton onPress={this.addTodo}/>
                 <Footer
-                    filter={this.props.filter}
-                    changeFilter={this.props.actions.visibilityFilter}
+                    filter={props.filter}
+                    changeFilter={props.actions.visibilityFilter}
                 />
             </Container>
         );

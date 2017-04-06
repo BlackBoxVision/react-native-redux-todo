@@ -11,15 +11,28 @@ export default class FooterItem extends Component {
         currentFilter: PropTypes.string.isRequired,
         filter: PropTypes.string.isRequired,
         message: PropTypes.string.isRequired,
-        icon: PropTypes.string.isRequired
-    }
+        icon: PropTypes.string.isRequired,
+        style: PropTypes.object.isRequired,
+        size: PropTypes.number.isRequired
+    };
+
+    static defaultProps = {
+        size: 20
+    };
 
     render() {
+        const { props } = this;
+        const styles = this.getStyles(props);
+
         return (
-            <FooterTab style={{ backgroundColor: '#673AB7' }}>
-                <Button onPress={this.props.changeFilter}>
-                    <Icon name={this.props.icon} size={20} color={this.getColor(this.props.filter)}/>
-                    <Text style={{ color: this.getColor(this.props.filter) }}>
+            <FooterTab style={props.style}>
+                <Button onPress={props.changeFilter}>
+                    <Icon
+                        name={props.icon}
+                        size={props.size}
+                        color={this.getColor(props)}
+                    />
+                    <Text style={styles.text}>
                         {this.getMessage()}
                     </Text>
                 </Button>
@@ -27,7 +40,13 @@ export default class FooterItem extends Component {
         );
     }
 
-    getColor = filter => this.props.currentFilter === filter ? '#F8BBD0' : '#FFFFFF';
+    getColor = (props) => props.currentFilter === props.filter ? '#F8BBD0' : '#FFFFFF';
 
     getMessage = () => Platform.OS === 'ios' ? capitalize(this.props.message) : this.props.message.toUpperCase();
+
+    getStyles = (props) => ({
+        text: {
+            color: props.currentFilter === props.filter ? '#F8BBD0' : '#FFFFFF'
+        }
+    });
 }

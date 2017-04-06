@@ -10,28 +10,30 @@ export default class Todos extends Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
         items: PropTypes.array.isRequired,
+        t: PropTypes.func.isRequired,
         toggleTodo: PropTypes.func.isRequired,
         removeTodo: PropTypes.func.isRequired
     };
 
     render() {
-        const { items, filter } = this.props;
-        const message = this.props.t(`message-${filter}`);
+        const { props } = this;
+        const styles = this.getStyles(props);
 
         return (
-            <Content contentContainerStyle={{ justifyContent: 'space-between' }}>
-                {!items.length && <EmptyView name={this.getName(filter)} message={message}/>}
-                {!!items.length && <List dataArray={items} renderRow={this.renderItem}/>}
+            <Content contentContainerStyle={styles.content}>
+                {!props.items.length && <EmptyView name={this.getName(props.filter)} message={props.t(`message-${props.filter}`)}/>}
+                {!!props.items.length && <List dataArray={props.items} renderRow={this.getItemRenderer(props, styles)}/>}
             </Content>
         )
     }
 
-    renderItem = item => (
+    getItemRenderer = (props, styles) => ({ key, text, completed }, index) => (
         <TodoItem
-            item={item}
-            key={`todo-${item.key}`}
-            toggle={() => this.props.toggleTodo(item.key)}
-            remove={() => this.props.removeTodo(item.key)}
+            key={`todo-item-key${index}`}
+            message={text}
+            isCompleted={completed}
+            toggle={() => props.toggleTodo(key)}
+            remove={() => props.removeTodo(key)}
         />
     );
 
@@ -46,4 +48,10 @@ export default class Todos extends Component {
                 return 'assignment';
         }
     }
+
+    getStyles = (props) => ({
+        content: {
+            justifyContent: 'space-between'
+        }
+    });
 }

@@ -7,12 +7,15 @@ import FooterItem from './FooterItem';
 @translate()
 export default class TodoFooter extends Component {
     static propTypes = {
-        filter: PropTypes.string,
-        changeFilter: PropTypes.func,
-        tabs: PropTypes.arrayOf(PropTypes.object)
+        filter: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        t: PropTypes.func.isRequired,
+        changeFilter: PropTypes.func.isRequired,
+        tabs: PropTypes.arrayOf(PropTypes.object).isRequired
     };
 
     static defaultProps = {
+        backgroundColor: '#673AB7',
         tabs: [
             {
                 filter: 'all',
@@ -30,21 +33,31 @@ export default class TodoFooter extends Component {
     };
 
     render() {
+        const { props } = this;
+        const styles = this.getStyles(props);
+
         return (
-            <Footer style={{ backgroundColor: '#673AB7' }}>
-                {this.props.tabs.map(this.renderFooterTab)}
+            <Footer style={styles.footer}>
+                {props.tabs.map(this.getItemRenderer(props, styles))}
             </Footer>
         )
     }
 
-    renderFooterTab = (tab, index) => (
+    getItemRenderer = (props, styles) => ({ icon, filter }, index) => (
         <FooterItem
-            key={`tab-key-${index}`}
-            icon={tab.icon}
-            filter={tab.filter}
-            message={this.props.t(tab.filter)}
-            currentFilter={this.props.filter}
-            changeFilter={() => this.props.changeFilter(tab.filter)}
+            key={`footer-item-key${index}`}
+            icon={icon}
+            filter={filter}
+            message={props.t(filter)}
+            currentFilter={props.filter}
+            changeFilter={() => props.changeFilter(filter)}
+            style={styles.footer}
         />
     );
+
+    getStyles = (props) => ({
+        footer: {
+            backgroundColor: props.backgroundColor
+        }
+    })
 }

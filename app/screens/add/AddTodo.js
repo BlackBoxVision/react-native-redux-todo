@@ -12,7 +12,9 @@ import headerStyles from '../../config/header';
 export default class AddTodo extends Component {
     static propTypes = {
         value: PropTypes.string.isRequired,
-        actions: PropTypes.objectOf(PropTypes.func)
+        t: PropTypes.func.isRequired,
+        navigation: PropTypes.object.isRequired,
+        actions: PropTypes.objectOf(PropTypes.func).isRequired
     }
 
     static navigationOptions = {
@@ -21,19 +23,22 @@ export default class AddTodo extends Component {
     };
 
     render() {
+        const { props } = this;
+        const styles = this.getStyles(props);
+
         return (
             <Container>
-                <Content contentContainerStyle={{ justifyContent: 'space-between' }}>
+                <Content contentContainerStyle={styles.content}>
                     <Form>
                         <InputGroup
                             borderType="underline"
-                            style={{ flex: 0.9 }}
+                            style={styles.inputGroup}
                         >
                             <Input
-                                value={this.props.value}
-                                placeholder={this.props.t('add-todo')}
+                                value={props.value}
+                                placeholder={props.t('add-todo')}
                                 onSubmitEditing={this.submitTodo}
-                                onChangeText={this.props.actions.changeValue}
+                                onChangeText={props.actions.changeValue}
                             />
                         </InputGroup>
                     </Form>
@@ -56,4 +61,13 @@ export default class AddTodo extends Component {
         this.props.actions.clearValue();
         this.props.navigation.goBack();
     };
+
+    getStyles = (props) => ({
+        content: {
+            justifyContent: 'space-between'
+        },
+        inputGroup: {
+            flex: 0.9
+        }
+    });
 }
