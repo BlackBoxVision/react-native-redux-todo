@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import bind from '../../redux/logic/todo/bindings';
 
+import headerStyles from '../../config/header';
+
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
 @translate()
 export default class AddTodo extends Component {
@@ -15,15 +17,7 @@ export default class AddTodo extends Component {
 
     static navigationOptions = {
         title: 'Add Todo',
-        header: {
-            tintColor: '#FFFFFF',
-            style: {
-                backgroundColor: '#673AB7'
-            },
-            titleStyle: {
-                color: '#FFFFFf'
-            }
-        }
+        header: headerStyles
     };
 
     render() {

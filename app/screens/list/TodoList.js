@@ -5,9 +5,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Todos from './components/Todos';
 import Footer from './components/Footer';
+import FloatingButton from './components/FloatingButton';
 
 import bind from '../../redux/logic/todo/bindings';
 
+import headerStyles from '../../config/header';
 import app from '../../../app.json';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
@@ -21,15 +23,7 @@ export default class TodoList extends Component {
 
     static navigationOptions = {
         title: app.displayName,
-        header: {
-            tintColor: '#FFFFFF',
-            style: {
-                backgroundColor: '#673AB7'
-            },
-            titleStyle: {
-                color: '#FFFFFf'
-            }
-        }
+        header: headerStyles
     };
 
     render() {
@@ -41,19 +35,7 @@ export default class TodoList extends Component {
                     toggleTodo={this.props.actions.toggleTodo}
                     removeTodo={this.props.actions.removeTodo}
                 />
-                <Fab
-                    active={false}
-                    direction="right"
-                    position="bottomRight"
-                    onPress={this.addTodo}
-                    containerStyle={{
-                        bottom: 70
-                    }}
-                    style={{
-                        backgroundColor: '#E91E63'
-                    }}>
-                    <Icon name="add" size={20} color="#FFFFFF"/>
-                </Fab>
+                <FloatingButton onPress={this.addTodo}/>
                 <Footer
                     filter={this.props.filter}
                     changeFilter={this.props.actions.visibilityFilter}
