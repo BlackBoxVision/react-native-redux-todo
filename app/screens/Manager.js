@@ -3,7 +3,7 @@ import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import bind from '../redux/logic/navigate/bindings';
-import Navigator from './navigation';
+import Navigator from '../config/navigation';
 
 @connect(bind.mapStateToProps)
 export default class ScreenManager extends Component {

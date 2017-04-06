@@ -6,7 +6,7 @@ import i18n from './config/i18n';
 
 import configureStore from './redux/helper/configureStore';
 
-import ScreenManager from './config/manager';
+import ScreenManager from './screens/Manager';
 
 export default class TodoApp extends Component {
     render() {
