@@ -3,10 +3,10 @@ import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import bind from '../redux/logic/navigate/bindings';
-import Navigator from './routing';
+import Navigator from './navigation';
 
 @connect(bind.mapStateToProps)
-export default class AppNavigator extends Component {
+export default class ScreenManager extends Component {
     render() {
         return (
             <Navigator

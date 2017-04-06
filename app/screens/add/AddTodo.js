@@ -3,7 +3,7 @@ import { Container, Content, Form, InputGroup, Input } from 'native-base';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import bind from '../redux/logic/todo/bindings';
+import bind from '../../redux/logic/todo/bindings';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
 @translate()

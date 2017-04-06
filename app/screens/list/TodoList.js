@@ -3,12 +3,12 @@ import { Container, Fab } from 'native-base';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Todos from '../components/Todos';
-import Footer from '../components/Footer';
+import Todos from './components/Todos';
+import Footer from './components/Footer';
 
-import bind from '../redux/logic/todo/bindings';
+import bind from '../../redux/logic/todo/bindings';
 
-import app from '../../app.json';
+import app from '../../../../app.json';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
 export default class TodoList extends Component {

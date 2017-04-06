@@ -33,7 +33,7 @@ export default function configureStore(onComplete = () => {}) {
     );
 
     // if (isDebuggingInChrome) {
-    //     window.store = store;
+    //     window.helper = helper;
     // }
 
     const load = storage.createLoader(engine);

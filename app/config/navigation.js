@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
-import TodoList from '../screen/TodoList';
-import AddTodo from '../screen/AddTodo';
+import TodoList from '../screens/list/TodoList';
+import AddTodo from '../screens/add/AddTodo';
 
 export default StackNavigator({
     Home: {
