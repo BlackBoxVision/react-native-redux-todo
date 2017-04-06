@@ -1,7 +1,7 @@
 import { NativeModules, Platform } from 'react-native';
 import i18next from 'i18next';
 
-import translations from '../translations/messages';
+import translations from '../resources/messages';
 
 function getLocale() {
     return Platform.OS === 'ios' ? NativeModules.SettingsManager.settings.AppleLocale : NativeModules.I18nManager.localeIdentifier;

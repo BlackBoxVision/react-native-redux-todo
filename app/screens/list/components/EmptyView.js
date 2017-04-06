@@ -5,24 +5,46 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class EmptyView extends Component {
     static propTypes = {
-        message: PropTypes.string
+        color: PropTypes.string.isRequired,
+        iconColor: PropTypes.string.isRequired,
+        iconName: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        size: PropTypes.number.isRequired,
+    };
+
+    static defaultProps = {
+        iconColor: '#E91E63',
+        color: '#424242',
+        size: 60
     };
 
     render() {
-        const { height } = Dimensions.get('window');
+        const { props } = this;
+        const styles = this.getStyles(props);
 
         return (
-            <View style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingTop: (height/2) - 100
-            }}>
-                <Icon name={this.props.name} size={60} color='#E91E63'/>
-                <Text style={{ color: '#424242' }}>
-                    {this.props.message}
+            <View style={styles.container}>
+                <Icon
+                    name={props.iconName}
+                    size={props.size}
+                    color={props.iconColor}
+                />
+                <Text style={styles.text}>
+                    {props.text}
                 </Text>
             </View>
         )
     }
+
+    getStyles = (props) => ({
+        container: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingTop: (Dimensions.get('window').height / 2) - 100
+        },
+        text: {
+            color: props.color
+        }
+    });
 }
