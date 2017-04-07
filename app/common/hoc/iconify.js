@@ -21,7 +21,15 @@ export default function iconify() {
                 )
             }
 
-            getIcon = key => this.context.icons[key];
+            getIcon = key => {
+                const icon = this.context.icons[key];
+
+                if (!icon) {
+                    throw `The icon with ${key} is not present inside icons. Maybe you forget to declare it? Review icons.json`;
+                }
+
+                return icon;
+            }
         }
 
         return IconifyComponent;
