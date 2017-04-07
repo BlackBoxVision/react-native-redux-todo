@@ -39,6 +39,7 @@ export default function backify() {
                 )
             }
 
+            //TODO Review it
             isMainScreen = () => ReactComponent.displayName === 'TodoList';
         }
 

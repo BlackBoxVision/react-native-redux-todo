@@ -3,7 +3,7 @@ import { Container, Content, Form, InputGroup, Input, Header, Body, Title, Butto
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import bind from '../../redux/logic/todo/bindings';
+import bind from './connect/bindings';
 import backify from '../../common/hoc/backify';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
@@ -17,7 +17,7 @@ export default class AddTodo extends Component {
         t: PropTypes.func.isRequired,
         navigation: PropTypes.object.isRequired,
         actions: PropTypes.objectOf(PropTypes.func).isRequired
-    }
+    };
 
     render() {
         const { props, getStyles, goBack, submitTodo } = this;

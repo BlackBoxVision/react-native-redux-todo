@@ -6,7 +6,7 @@ import Todos from './components/Todos';
 import Footer from './components/Footer';
 import FloatingButton from '../../common/FloatingButton';
 
-import bind from '../../redux/logic/todo/bindings';
+import bind from './connect/bindings';
 import backify from '../../common/hoc/backify';
 import app from '../../../app.json';
 
@@ -17,7 +17,6 @@ export default class TodoList extends Component {
 
     static propTypes = {
         items: PropTypes.array.isRequired,
-        value: PropTypes.string.isRequired,
         filter: PropTypes.string.isRequired,
         navigation: PropTypes.object.isRequired,
         actions: PropTypes.objectOf(PropTypes.func).isRequired
