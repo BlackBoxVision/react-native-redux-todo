@@ -4,10 +4,14 @@ import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import bind from '../../redux/logic/todo/bindings';
+import backify from '../../common/hoc/backify';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
 @translate()
+@backify()
 export default class AddTodo extends Component {
+    static displayName = 'AddTodo';
+
     static propTypes = {
         value: PropTypes.string.isRequired,
         t: PropTypes.func.isRequired,

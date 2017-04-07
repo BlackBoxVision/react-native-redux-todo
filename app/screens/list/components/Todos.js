@@ -33,7 +33,8 @@ export default class Todos extends Component {
 
     getStyles = (props) => ({
         content: {
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            padding: 8
         }
     });
 

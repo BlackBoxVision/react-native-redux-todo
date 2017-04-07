@@ -7,10 +7,14 @@ import Footer from './components/Footer';
 import FloatingButton from '../../common/FloatingButton';
 
 import bind from '../../redux/logic/todo/bindings';
+import backify from '../../common/hoc/backify';
 import app from '../../../app.json';
 
 @connect(bind.mapStateToProps, bind.mapDispatchToProps)
+@backify()
 export default class TodoList extends Component {
+    static displayName = 'TodoList';
+
     static propTypes = {
         items: PropTypes.array.isRequired,
         value: PropTypes.string.isRequired,
