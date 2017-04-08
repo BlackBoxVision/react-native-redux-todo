@@ -1,6 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 
-import TodoList from '../screens/list/TodoList';
+import Todos from '../screens/list/Todos';
 import AddTodo from '../screens/add/AddTodo';
 
 const config = {
@@ -9,7 +9,7 @@ const config = {
 
 const routes = {
     Home: {
-        screen: TodoList
+        screen: Todos
     },
     AddTodo: {
         screen: AddTodo

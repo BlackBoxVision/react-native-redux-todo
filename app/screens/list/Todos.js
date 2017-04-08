@@ -1,19 +1,39 @@
 import React, { Component, PropTypes } from 'react';
 import { Container, Header, Left, Title } from 'native-base';
-import { connect } from 'react-redux';
+import bindActionCreators from 'redux/lib/bindActionCreators';
+import connect from 'react-redux/lib/connect/connect';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
 
-import Todos from './components/Todos';
-import Footer from './components/Footer';
 import FloatingButton from '../../common/FloatingButton';
+import TodoList from './components/TodoList';
+import Footer from './components/Footer';
 
-import bind from './connect/bindings';
 import backify from '../../common/hoc/backify';
+
+import * as TodoActions from '../../redux/logic/todo/actions';
+import * as TodoSelectors from '../../redux/logic/todo/selector';
+
 import app from '../../../app.json';
 
-@connect(bind.mapStateToProps, bind.mapDispatchToProps)
-@backify()
-export default class TodoList extends Component {
-    static displayName = 'TodoList';
+const mapStateToProps = state => ({
+    items: TodoSelectors.getVisibleTodos(state),
+    filter: state.todo.filter
+});
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(TodoActions, dispatch)
+});
+
+const enhance = compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    backify(),
+    pure
+);
+
+@enhance
+export default class Todos extends Component {
+    static displayName = 'Todos';
 
     static propTypes = {
         items: PropTypes.array.isRequired,
@@ -35,7 +55,7 @@ export default class TodoList extends Component {
                         </Title>
                     </Left>
                 </Header>
-                <Todos
+                <TodoList
                     items={props.items}
                     filter={props.filter}
                     toggleTodo={props.actions.toggleTodo}

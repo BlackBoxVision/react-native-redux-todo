@@ -10,6 +10,7 @@ function getLocale() {
 const locale = getLocale();
 
 export default i18next.init({
+    fallbackLng: 'en',
     lng: locale ? locale.replace(/_/, '-') : 'en',
     resources: translations
 });

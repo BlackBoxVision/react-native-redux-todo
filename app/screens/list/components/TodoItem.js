@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { CardItem, Text, CheckBox, Left, Body, Right } from 'native-base';
+import { ListItem, Text, CheckBox, Left, Body, Right } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class TodoItem extends Component {
@@ -21,7 +21,7 @@ export default class TodoItem extends Component {
 
     render() {
         return (
-            <CardItem>
+            <ListItem>
                 <Left>
                     <CheckBox
                         color={this.props.color}
@@ -42,7 +42,7 @@ export default class TodoItem extends Component {
                         color={this.props.color}
                     />
                 </Right>
-            </CardItem>
+            </ListItem>
         )
     }
 }

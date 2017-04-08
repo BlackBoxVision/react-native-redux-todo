@@ -1,14 +1,31 @@
 import React, { Component, PropTypes } from 'react';
 import { Container, Content, Form, InputGroup, Input, Header, Body, Title, Button, Left, Icon, Right } from 'native-base';
-import { translate } from 'react-i18next';
-import { connect } from 'react-redux';
+import bindActionCreators from 'redux/lib/bindActionCreators';
+import translate from 'react-i18next/dist/commonjs/translate';
+import connect from 'react-redux/lib/connect/connect';
+import compose from 'recompose/compose';
+import pure from 'recompose/pure';
 
-import bind from './connect/bindings';
 import backify from '../../common/hoc/backify';
 
-@connect(bind.mapStateToProps, bind.mapDispatchToProps)
-@translate()
-@backify()
+import * as TodoActions from '../../redux/logic/todo/actions';
+
+const mapStateToProps = state => ({
+    value: state.todo.value
+});
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(TodoActions, dispatch)
+});
+
+const enhance = compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    translate(),
+    backify(),
+    pure
+);
+
+@enhance
 export default class AddTodo extends Component {
     static displayName = 'AddTodo';
 

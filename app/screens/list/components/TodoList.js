@@ -1,15 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { Content, List } from 'native-base';
-import { translate } from 'react-i18next';
+import translate from 'react-i18next/dist/commonjs/translate';
+import compose from 'recompose/compose';
 
 import iconify from '../../../common/hoc/iconify';
 
 import EmptyView from '../../../common/EmptyView';
 import TodoItem from './TodoItem';
 
-@translate()
-@iconify()
-export default class Todos extends Component {
+const enhance = compose(
+    translate(),
+    iconify()
+);
+
+@enhance
+export default class TodoList extends Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
         items: PropTypes.array.isRequired,
@@ -33,8 +38,7 @@ export default class Todos extends Component {
 
     getStyles = (props) => ({
         content: {
-            justifyContent: 'space-between',
-            padding: 8
+            justifyContent: 'space-between'
         }
     });
 

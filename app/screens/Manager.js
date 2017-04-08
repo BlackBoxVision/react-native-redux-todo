@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { addNavigationHelpers } from 'react-navigation';
-import { connect } from 'react-redux';
+import addNavigationHelpers from 'react-navigation/lib/addNavigationHelpers';
+import connect from 'react-redux/lib/connect/connect';
 
-import bind from '../redux/logic/navigate/bindings';
 import Navigator from '../config/navigation';
 
-@connect(bind.mapStateToProps)
+const mapStateToProps = state => ({
+    navigate: state.navigate
+});
+
+@connect(mapStateToProps)
 export default class ScreenManager extends Component {
     render() {
         return (

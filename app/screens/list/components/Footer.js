@@ -1,13 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { Footer } from 'native-base';
-import { translate } from 'react-i18next';
+import translate from 'react-i18next/dist/commonjs/translate';
+
+import compose from 'recompose/compose';
 
 import iconify from '../../../common/hoc/iconify';
 
 import FooterItem from './FooterItem';
 
-@translate()
-@iconify()
+const enhance = compose(
+    translate(),
+    iconify()
+);
+
+@enhance
 export default class TodoFooter extends Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
