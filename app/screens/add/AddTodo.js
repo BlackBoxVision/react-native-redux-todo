@@ -6,7 +6,7 @@ import connect from 'react-redux/lib/connect/connect';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 
-import backify from '../../common/hoc/backify';
+import withBackButton from '../../common/hoc/withBackButton';
 
 import * as TodoActions from '../../redux/logic/todo/actions';
 
@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
 const enhance = compose(
     connect(mapStateToProps, mapDispatchToProps),
     translate(),
-    backify(),
+    withBackButton(),
     pure
 );
 
@@ -35,6 +35,10 @@ export default class AddTodo extends Component {
         navigation: PropTypes.object.isRequired,
         actions: PropTypes.objectOf(PropTypes.func).isRequired
     };
+
+    componentDidMount() {
+        this.input._root.focus();
+    }
 
     render() {
         const { props, getStyles, goBack, submitTodo } = this;
@@ -62,6 +66,7 @@ export default class AddTodo extends Component {
                             style={styles.inputGroup}
                         >
                             <Input
+                                ref={ref => this.input = ref}
                                 value={props.value}
                                 placeholder={props.t('add-todo')}
                                 onSubmitEditing={submitTodo}

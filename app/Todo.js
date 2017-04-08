@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StatusBar, Platform } from 'react-native';
 
 import i18n from './config/i18n';
 import icons from './resources/icons';
@@ -9,20 +8,13 @@ import configureStore from './redux/helper/configureStore';
 import ScreenManager from './screens/Manager';
 import DataProvider from './common/DataProvider';
 
-export default class TodoApp extends Component {
-    componentDidMount() {
-        if (Platform.OS === 'android') {
-            StatusBar.setBackgroundColor('#512DA8', true);
-        }
-    }
+import withStatusBar from './common/hoc/withStatusBar';
 
+@withStatusBar('#512DA8')
+export default class TodoApp extends Component {
     render() {
         return (
-            <DataProvider
-                store={configureStore()}
-                icons={icons}
-                i18n={i18n}
-            >
+            <DataProvider store={configureStore()} icons={icons} i18n={i18n}>
                 <ScreenManager/>
             </DataProvider>
         );

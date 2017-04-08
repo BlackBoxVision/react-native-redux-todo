@@ -1,9 +1,9 @@
 import React from 'react';
 import { BackAndroid, Platform } from 'react-native';
 
-export default function backify() {
+export default function withBackButton() {
     return ReactComponent => {
-        class BackifyComponent extends React.Component {
+        class BackButtonComponent extends React.Component {
             constructor(props, context) {
                 super(props, context);
             }
@@ -43,6 +43,6 @@ export default function backify() {
             isMainScreen = () => ReactComponent.displayName === 'Todos';
         }
 
-        return BackifyComponent;
+        return BackButtonComponent;
     }
 }

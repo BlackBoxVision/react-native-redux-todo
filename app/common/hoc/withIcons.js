@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
-export default function iconify() {
+export default function withIcons() {
     return ReactComponent => {
-        class IconifyComponent extends React.Component {
+        class IconComponent extends React.Component {
             static contextTypes = {
                 icons: PropTypes.object.isRequired
             };
@@ -32,6 +32,6 @@ export default function iconify() {
             }
         }
 
-        return IconifyComponent;
+        return IconComponent;
     }
 }

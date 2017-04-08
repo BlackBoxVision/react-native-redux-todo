@@ -4,13 +4,13 @@ import translate from 'react-i18next/dist/commonjs/translate';
 
 import compose from 'recompose/compose';
 
-import iconify from '../../../common/hoc/iconify';
+import withIcons from '../../../common/hoc/withIcons';
 
 import FooterItem from './FooterItem';
 
 const enhance = compose(
     translate(),
-    iconify()
+    withIcons()
 );
 
 @enhance

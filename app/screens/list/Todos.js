@@ -9,7 +9,7 @@ import FloatingButton from '../../common/FloatingButton';
 import TodoList from './components/TodoList';
 import Footer from './components/Footer';
 
-import backify from '../../common/hoc/backify';
+import withBackButton from '../../common/hoc/withBackButton';
 
 import * as TodoActions from '../../redux/logic/todo/actions';
 import * as TodoSelectors from '../../redux/logic/todo/selector';
@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => ({
 
 const enhance = compose(
     connect(mapStateToProps, mapDispatchToProps),
-    backify(),
+    withBackButton(),
     pure
 );
 

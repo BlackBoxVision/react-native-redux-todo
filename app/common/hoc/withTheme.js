@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
-export default function themify() {
+export default function withTheme() {
     return ReactComponent => {
-        class ThemifyComponent extends React.Component {
+        class ThemableComponent extends React.Component {
             static contextTypes = {
                 appTheme: PropTypes.object.isRequired
             };
@@ -22,6 +22,6 @@ export default function themify() {
             }
         }
 
-        return ThemifyComponent;
+        return ThemableComponent;
     }
 }
