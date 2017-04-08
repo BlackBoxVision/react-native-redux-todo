@@ -38,21 +38,3 @@ export function visibilityFilter(filter) {
         }
     });
 }
-
-export function changeValue(value) {
-    return createAction({
-        type: TodoActions.CHANGE_VALUE,
-        payload: {
-            value
-        }
-    })
-}
-
-export function clearValue() {
-    return createAction({
-        type: TodoActions.CLEAR_VALUE,
-        payload: {
-            value: ''
-        }
-    })
-}

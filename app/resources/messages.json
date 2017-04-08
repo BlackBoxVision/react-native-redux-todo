@@ -8,7 +8,12 @@
             "title": "Add Todo",
             "message-all": "There are no todos",
             "message-active": "There are no active todos",
-            "message-complete": "There are no complete todos"
+            "message-complete": "There are no complete todos",
+            "todo-title": "Title",
+            "todo-description": "Description",
+            "todo-submit": "Submit TODO",
+            "is-completed": "Is Completed",
+            "remove-todo": "Remove"
         }
     },
     "en-US": {
@@ -20,7 +25,12 @@
             "title": "Add Todo",
             "message-all": "There are no todos",
             "message-active": "There are no active todos",
-            "message-complete": "There are no complete todos"
+            "message-complete": "There are no complete todos",
+            "todo-title": "Title",
+            "todo-description": "Description",
+            "todo-submit": "Submit TODO",
+            "is-completed": "Is Completed",
+            "remove-todo": "Remove"
         }
     },
     "es-US": {
@@ -32,7 +42,12 @@
             "title": "Añadir TODO",
             "message-all": "No hay ninguna tarea",
             "message-active": "No hay ninguna tarea activa",
-            "message-complete": "No hay ninguna tarea completa"
+            "message-complete": "No hay ninguna tarea completa",
+            "todo-title": "Titulo",
+            "todo-description": "Descripción",
+            "todo-submit": "Agregar TODO",
+            "is-completed": "Completado",
+            "remove-todo": "Eliminar"
         }
     },
     "es": {
@@ -44,7 +59,12 @@
             "title": "Añadir TODO",
             "message-all": "No hay ninguna tarea",
             "message-active": "No hay ninguna tarea activa",
-            "message-complete": "No hay ninguna tarea completa"
+            "message-complete": "No hay ninguna tarea completa",
+            "todo-title": "Titulo",
+            "todo-description": "Descripción",
+            "todo-submit": "Agregar TODO",
+            "is-completed": "Completado",
+            "remove-todo": "Eliminar"
         }
     }
 }

@@ -2,7 +2,6 @@ import TodoActions from './constants';
 
 const initialState = {
     filter: 'all',
-    value: '',
     items: []
 };
 
@@ -39,13 +38,6 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 filter: payload.filter
-            };
-
-        case TodoActions.CHANGE_VALUE:
-        case TodoActions.CLEAR_VALUE:
-            return {
-                ...state,
-                value: payload.value
             };
 
         default:

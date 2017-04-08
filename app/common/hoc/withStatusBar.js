@@ -3,7 +3,7 @@ import { Platform, StatusBar } from 'react-native';
 
 export default function withStatusBar(backgroundColor) {
     return ReactComponent => {
-        class MyAwesomeComponent extends React.Component {
+        class StatusBarComponent extends React.Component {
             constructor(props, context) {
                 super(props, context);
             }
@@ -24,6 +24,6 @@ export default function withStatusBar(backgroundColor) {
             }
         }
 
-        return MyAwesomeComponent;
+        return StatusBarComponent;
     }
 }

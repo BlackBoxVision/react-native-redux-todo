@@ -1,25 +1,25 @@
 import React, { Component, PropTypes } from 'react';
-import { Container, Content, Form, InputGroup, Input, Header, Body, Title, Button, Left, Icon, Right } from 'native-base';
+import { Container, Content, Header, Body, Title, Button, Left, Icon, Right } from 'native-base';
 import bindActionCreators from 'redux/lib/bindActionCreators';
 import translate from 'react-i18next/dist/commonjs/translate';
 import connect from 'react-redux/lib/connect/connect';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 
+import { reduxForm } from 'redux-form';
+
+import AddTodoForm from './components/Form';
 import withBackButton from '../../common/hoc/withBackButton';
 
 import * as TodoActions from '../../redux/logic/todo/actions';
-
-const mapStateToProps = state => ({
-    value: state.todo.value
-});
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(TodoActions, dispatch)
 });
 
 const enhance = compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(null, mapDispatchToProps),
+    reduxForm({ form: 'todo' }),
     translate(),
     withBackButton(),
     pure
@@ -30,15 +30,10 @@ export default class AddTodo extends Component {
     static displayName = 'AddTodo';
 
     static propTypes = {
-        value: PropTypes.string.isRequired,
         t: PropTypes.func.isRequired,
         navigation: PropTypes.object.isRequired,
         actions: PropTypes.objectOf(PropTypes.func).isRequired
     };
-
-    componentDidMount() {
-        this.input._root.focus();
-    }
 
     render() {
         const { props, getStyles, goBack, submitTodo } = this;
@@ -60,20 +55,10 @@ export default class AddTodo extends Component {
                     <Right />
                 </Header>
                 <Content contentContainerStyle={styles.content}>
-                    <Form>
-                        <InputGroup
-                            borderType="underline"
-                            style={styles.inputGroup}
-                        >
-                            <Input
-                                ref={ref => this.input = ref}
-                                value={props.value}
-                                placeholder={props.t('add-todo')}
-                                onSubmitEditing={submitTodo}
-                                onChangeText={props.actions.changeValue}
-                            />
-                        </InputGroup>
-                    </Form>
+                    <AddTodoForm
+                        t={props.t}
+                        handleSubmit={props.handleSubmit(submitTodo)}
+                    />
                 </Content>
             </Container>
         )
@@ -81,7 +66,8 @@ export default class AddTodo extends Component {
 
     getStyles = (props) => ({
         content: {
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            padding: 8
         },
         inputGroup: {
             flex: 0.9
@@ -99,18 +85,18 @@ export default class AddTodo extends Component {
 
     goBack = props => _ => props.navigation.goBack();
 
-    submitTodo = () => {
-        if (this.props.value.length === 0) {
+    submitTodo = (values) => {
+        if (Object.keys(values).length === 0) {
             return;
         }
 
         this.props.actions.addTodo({
             key: Date.now(),
-            text: this.props.value,
+            title: values.title,
+            description: values.description,
             completed: false
         });
 
-        this.props.actions.clearValue();
         this.props.navigation.goBack();
     };
 }

@@ -38,15 +38,19 @@ export default class TodoList extends Component {
 
     getStyles = (props) => ({
         content: {
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            padding: 8
         }
     });
 
-    getItemRenderer = (props, styles) => ({ key, text, completed }, index) => (
+    getItemRenderer = (props, styles) => ({ key, title, description, completed }, index) => (
         <TodoItem
             key={`todo-item-key${index}`}
-            message={text}
+            title={title}
+            description={description}
             isCompleted={completed}
+            toggleMessage={props.t('is-completed')}
+            removeMessage={props.t('remove-todo')}
             toggle={() => props.toggleTodo(key)}
             remove={() => props.removeTodo(key)}
         />
