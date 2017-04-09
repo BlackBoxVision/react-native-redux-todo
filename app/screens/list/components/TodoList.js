@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, array, func } from 'prop-types';
 import { Content, List } from 'native-base';
 import translate from 'react-i18next/dist/commonjs/translate';
 import compose from 'recompose/compose';
@@ -17,12 +17,12 @@ const enhance = compose(
 @enhance
 export default class TodoList extends React.Component {
     static propTypes = {
-        filter: PropTypes.string.isRequired,
-        items: PropTypes.array.isRequired,
-        t: PropTypes.func.isRequired,
-        getIcon: PropTypes.func.isRequired,
-        toggleTodo: PropTypes.func.isRequired,
-        removeTodo: PropTypes.func.isRequired
+        filter: string.isRequired,
+        items: array.isRequired,
+        t: func.isRequired,
+        getIcon: func.isRequired,
+        toggleTodo: func.isRequired,
+        removeTodo: func.isRequired
     };
 
     render() {

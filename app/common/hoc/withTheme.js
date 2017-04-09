@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { object } from 'prop-types';
 
 export default function withTheme() {
     return ReactComponent => {
         class ThemableComponent extends React.Component {
             static contextTypes = {
-                appTheme: PropTypes.object.isRequired
+                appTheme: object.isRequired
             };
 
             constructor(props, context) {

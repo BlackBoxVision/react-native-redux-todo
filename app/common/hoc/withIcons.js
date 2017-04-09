@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { object } from 'prop-types';
 
 export default function withIcons() {
     return ReactComponent => {
         class IconComponent extends React.Component {
             static contextTypes = {
-                icons: PropTypes.object.isRequired
+                icons: object.isRequired
             };
 
             constructor(props, context) {

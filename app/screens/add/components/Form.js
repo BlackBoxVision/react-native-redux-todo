@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { func } from 'prop-types';
 import { Form, InputGroup, Input, Button, Text, Body } from 'native-base';
 import { Field } from 'redux-form';
 
@@ -17,8 +17,8 @@ const TextInput = ({ input, meta, ...inputProps }) => (
 
 export default class TodoForm extends React.Component {
     static propTypes = {
-        t: PropTypes.func.isRequired,
-        handleSubmit: PropTypes.func.isRequired
+        t: func.isRequired,
+        handleSubmit: func.isRequired
     };
 
     render() {

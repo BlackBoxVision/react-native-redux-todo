@@ -1,19 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { func, string, number, bool, any } from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Fab } from 'native-base';
 
 export default class FloatingButton extends React.Component {
     static propTypes = {
-        onPress: PropTypes.func.isRequired,
-        backgroundColor: PropTypes.string.isRequired,
-        iconColor: PropTypes.string.isRequired,
-        iconName: PropTypes.string.isRequired,
-        direction: PropTypes.string.isRequired,
-        position: PropTypes.string.isRequired,
-        iconSize: PropTypes.number.isRequired,
-        active: PropTypes.bool.isRequired,
-        children: PropTypes.any
+        onPress: func.isRequired,
+        backgroundColor: string.isRequired,
+        iconColor: string.isRequired,
+        iconName: string.isRequired,
+        direction: string.isRequired,
+        position: string.isRequired,
+        iconSize: number.isRequired,
+        active: bool.isRequired,
+        children: any
     };
 
     static defaultProps = {
@@ -32,19 +32,19 @@ export default class FloatingButton extends React.Component {
 
         return (
             <Fab
-                active={this.props.active}
-                direction={this.props.direction}
-                position={this.props.position}
-                onPress={this.props.onPress}
+                active={props.active}
+                direction={props.direction}
+                position={props.position}
+                onPress={props.onPress}
                 containerStyle={styles.fabContainer}
                 style={styles.fab}
             >
                 <Icon
-                    name={this.props.iconName}
-                    size={this.props.iconSize}
-                    color={this.props.iconColor}
+                    name={props.iconName}
+                    size={props.iconSize}
+                    color={props.iconColor}
                 />
-                {this.props.children}
+                {props.children}
             </Fab>
         )
     }
@@ -54,7 +54,7 @@ export default class FloatingButton extends React.Component {
             bottom: 70
         },
         fab: {
-            backgroundColor: this.props.backgroundColor
+            backgroundColor: props.backgroundColor
         }
     });
 }

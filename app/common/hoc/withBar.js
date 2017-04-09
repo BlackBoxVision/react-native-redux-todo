@@ -9,9 +9,8 @@ export default function withStatusBar(backgroundColor) {
             }
 
             componentDidMount() {
-                if (Platform.OS === 'android' && Platform.Version >= 21) {
-                    StatusBar.setBackgroundColor(backgroundColor, true);
-                }
+                Platform.OS === 'android' && Platform.Version >= 21 && StatusBar.setBackgroundColor(backgroundColor, true);
+                Platform.OS === 'ios' && StatusBar.setBarStyle('light-content');
             }
 
             render() {

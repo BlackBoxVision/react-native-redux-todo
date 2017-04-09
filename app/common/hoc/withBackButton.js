@@ -1,20 +1,18 @@
 import React  from 'react';
-import PropTypes from 'prop-types';
+import { number } from 'prop-types';
 import { BackAndroid, Platform } from 'react-native';
 import connect from 'react-redux/lib/connect/connect';
 
-export default function withBackButton(initialRoute = 'Home') {
+export default function withBackButton() {
     return ReactComponent => {
         const mapStateToProps = state => ({
-            index: state.navigate.index,
-            routes: state.navigate.routes
+            index: state.navigate.index
         });
 
         @connect(mapStateToProps)
         class BackButtonComponent extends React.Component {
             static propTypes = {
-                routes: PropTypes.array.isRequired,
-                index: PropTypes.number.isRequired
+                index: number.isRequired
             }
 
             constructor(props, context) {
@@ -22,15 +20,11 @@ export default function withBackButton(initialRoute = 'Home') {
             }
 
             componentDidMount() {
-                this.attachBackButton(this.props.routes, this.props.index);
-            }
-
-            componentWillReceiveProps(nextProps) {
-                this.attachBackButton(nextProps.routes, nextProps.index);
+                Platform.OS === 'android' && BackAndroid.addEventListener('hardwareBackPress', this.handleBackPress);
             }
 
             componentWillUnmount() {
-                this.detachBackButton();
+                Platform.OS === 'android' && BackAndroid.removeEventListener('hardwareBackPress', this.handleBackPress);
             }
 
             render() {
@@ -42,27 +36,14 @@ export default function withBackButton(initialRoute = 'Home') {
                 )
             }
 
-            attachBackButton = (routes, index) => {
-                if (Platform.OS === 'android') {
-                    BackAndroid.addEventListener('backPress', () => {
-                        if (routes[index].routeName !== initialRoute) {
-                            this.props.navigation.goBack();
-                            return true;
-                        } else {
-                            BackAndroid.exitApp();
-                            return true;
-                        }
-
-                        return false;
-                    });
+            handleBackPress = () => {
+                if (this.props.index) {
+                    this.props.navigation.goBack();
+                    return true
+                } else {
+                    return false
                 }
-            }
-
-            detachBackButton = () => {
-                if (Platform.OS === 'android') {
-                    BackAndroid.removeEventListener('backPress');
-                }
-            }
+            };
         }
 
         return BackButtonComponent;

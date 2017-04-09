@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { array, string, object, objectOf, func } from 'prop-types';
 import { Container, Header, Left, Title } from 'native-base';
 import bindActionCreators from 'redux/lib/bindActionCreators';
 import connect from 'react-redux/lib/connect/connect';
@@ -35,19 +35,19 @@ const enhance = compose(
 @enhance
 export default class Todos extends React.Component {
     static propTypes = {
-        items: PropTypes.array.isRequired,
-        filter: PropTypes.string.isRequired,
-        navigation: PropTypes.object.isRequired,
-        actions: PropTypes.objectOf(PropTypes.func).isRequired
+        items: array.isRequired,
+        filter: string.isRequired,
+        navigation: object.isRequired,
+        actions: objectOf(func).isRequired
     };
 
     render() {
-        const { props, getStyles, addTodo, handleScroll } = this;
+        const { props, getStyles, addTodo } = this;
         const styles = getStyles(props);
 
         return (
             <Container>
-                <Header style={styles.header}>
+                <Header searchBar rounded style={styles.header}>
                     <Left>
                         <Title style={styles.title}>
                             {app.displayName}
@@ -59,7 +59,6 @@ export default class Todos extends React.Component {
                     filter={props.filter}
                     toggleTodo={props.actions.toggleTodo}
                     removeTodo={props.actions.removeTodo}
-                    scroll={handleScroll}
                 />
                 <FloatingButton onPress={addTodo}/>
                 <Footer

@@ -1,5 +1,5 @@
 import React  from 'react';
-import PropTypes from 'prop-types';
+import { string, func, arrayOf } from 'prop-types';
 import { Footer } from 'native-base';
 import translate from 'react-i18next/dist/commonjs/translate';
 
@@ -17,11 +17,11 @@ const enhance = compose(
 @enhance
 export default class TodoFooter extends React.Component {
     static propTypes = {
-        filter: PropTypes.string.isRequired,
-        backgroundColor: PropTypes.string.isRequired,
-        t: PropTypes.func.isRequired,
-        changeFilter: PropTypes.func.isRequired,
-        tabs: PropTypes.arrayOf(PropTypes.string).isRequired
+        filter: string.isRequired,
+        backgroundColor: string.isRequired,
+        t: func.isRequired,
+        changeFilter: func.isRequired,
+        tabs: arrayOf(string).isRequired
     };
 
     static defaultProps = {

@@ -1,21 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { number, bool, string, func } from 'prop-types';
 import { Platform } from 'react-native';
 import { Button, Card, CardItem, Text, CheckBox, Left, Body, Right } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class TodoItem extends React.Component {
     static propTypes = {
-        size: PropTypes.number.isRequired,
-        isCompleted: PropTypes.bool.isRequired,
-        color: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        removeMessage: PropTypes.string.isRequired,
-        toggleMessage: PropTypes.string.isRequired,
-        iconName: PropTypes.string.isRequired,
-        toggle: PropTypes.func.isRequired,
-        remove: PropTypes.func.isRequired
+        size: number.isRequired,
+        isCompleted: bool.isRequired,
+        color: string.isRequired,
+        title: string.isRequired,
+        description: string.isRequired,
+        removeMessage: string.isRequired,
+        toggleMessage: string.isRequired,
+        iconName: string.isRequired,
+        toggle: func.isRequired,
+        remove: func.isRequired
     };
 
     static defaultProps = {
@@ -29,7 +29,7 @@ export default class TodoItem extends React.Component {
             <Card style={{ borderRadius: 4 }}>
                 <CardItem header>
                     <Icon name="assignment" size={this.props.size} color={this.props.color}/>
-                    <Text style={{ color: this.props.color, marginLeft: 8 }}>
+                    <Text numberOfLines={1} style={{ color: this.props.color, marginLeft: 8, flex: 1 }}>
                         {this.props.title}
                     </Text>
                 </CardItem>
