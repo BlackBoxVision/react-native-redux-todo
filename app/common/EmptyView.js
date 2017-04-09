@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Dimensions } from 'react-native';
 import { Text, View } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default class EmptyView extends Component {
+export default class EmptyView extends React.Component {
     static propTypes = {
         color: PropTypes.string.isRequired,
         iconColor: PropTypes.string.isRequired,

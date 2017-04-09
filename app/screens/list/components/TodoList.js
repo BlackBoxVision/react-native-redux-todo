@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Content, List } from 'native-base';
 import translate from 'react-i18next/dist/commonjs/translate';
 import compose from 'recompose/compose';
@@ -14,7 +15,7 @@ const enhance = compose(
 );
 
 @enhance
-export default class TodoList extends Component {
+export default class TodoList extends React.Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
         items: PropTypes.array.isRequired,

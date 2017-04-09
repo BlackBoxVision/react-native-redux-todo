@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import addNavigationHelpers from 'react-navigation/lib/addNavigationHelpers';
 import connect from 'react-redux/lib/connect/connect';
 
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 @connect(mapStateToProps)
-export default class ScreenManager extends Component {
+export default class ScreenManager extends React.Component {
     render() {
         return (
             <Navigator

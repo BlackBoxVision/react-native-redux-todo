@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
 import { Button, Card, CardItem, Text, CheckBox, Left, Body, Right } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default class TodoItem extends Component {
+export default class TodoItem extends React.Component {
     static propTypes = {
         size: PropTypes.number.isRequired,
         isCompleted: PropTypes.bool.isRequired,
@@ -27,7 +28,7 @@ export default class TodoItem extends Component {
         return (
             <Card style={{ borderRadius: 4 }}>
                 <CardItem header>
-                    <Icon name="assignment" size={20} color={this.props.color}/>
+                    <Icon name="assignment" size={this.props.size} color={this.props.color}/>
                     <Text style={{ color: this.props.color, marginLeft: 8 }}>
                         {this.props.title}
                     </Text>
@@ -55,7 +56,7 @@ export default class TodoItem extends Component {
                     </Left>
                     <Body/>
                     <Right>
-                        <Button onPress={this.props.remove} transparent>
+                        <Button onPress={this.props.remove} style={{ marginTop: 3 }} transparent>
                             <Icon
                                 onPress={this.props.remove}
                                 name={this.props.iconName}

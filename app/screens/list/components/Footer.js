@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React  from 'react';
+import PropTypes from 'prop-types';
 import { Footer } from 'native-base';
 import translate from 'react-i18next/dist/commonjs/translate';
 
@@ -14,7 +15,7 @@ const enhance = compose(
 );
 
 @enhance
-export default class TodoFooter extends Component {
+export default class TodoFooter extends React.Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,

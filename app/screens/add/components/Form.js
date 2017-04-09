@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, InputGroup, Input, Button, Text, Body } from 'native-base';
 import { Field } from 'redux-form';
 
@@ -14,7 +15,7 @@ const TextInput = ({ input, meta, ...inputProps }) => (
     </InputGroup>
 );
 
-export default class TodoForm extends Component {
+export default class TodoForm extends React.Component {
     static propTypes = {
         t: PropTypes.func.isRequired,
         handleSubmit: PropTypes.func.isRequired

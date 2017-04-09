@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
 import { FooterTab, Button, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const capitalize = text => `${text.charAt(0).toUpperCase()}${text.slice(1).toLowerCase()}`;
 
-export default class FooterItem extends Component {
+export default class FooterItem extends React.Component {
     static propTypes = {
         changeFilter: PropTypes.func.isRequired,
         currentFilter: PropTypes.string.isRequired,

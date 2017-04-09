@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Fab } from 'native-base';
 
-export default class FloatingButton extends Component {
+export default class FloatingButton extends React.Component {
     static propTypes = {
         onPress: PropTypes.func.isRequired,
         backgroundColor: PropTypes.string.isRequired,
