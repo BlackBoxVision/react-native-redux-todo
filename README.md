@@ -7,6 +7,7 @@ This App is a sample showcase of how to build a React Native app that supports:
 - I18n/I10n
 - Navigation 
 - State Management
+- Persistence
 - Theming
 
 ## App Stack
@@ -15,6 +16,7 @@ The app is built with the following libraries:
 - i18next (**I18n/I10n**)
 - react-navigation (**Screen Management**)
 - redux (**State management**)
+- redux-storage (**Persistence**)
 - native-base (**Top level components using React Native building blocks**)
 
 ## Screenshots
