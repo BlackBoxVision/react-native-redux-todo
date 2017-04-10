@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { func } from 'prop-types';
 import { Form, InputGroup, Input, Button, Text, Body } from 'native-base';
 import { Field } from 'redux-form';
@@ -49,7 +50,7 @@ export default class TodoForm extends React.Component {
                     >
                         <Body>
                             <Text style={{ color: '#FFFFFF' }}>
-                                {props.t('todo-submit')}
+                                {Platform.OS === 'ios' ? props.t('todo-submit') : props.t('todo-submit').toUpperCase()}
                             </Text>
                         </Body>
                     </Button>

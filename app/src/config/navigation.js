@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
-import Todos from '../screens/list/Todos';
-import AddTodo from '../screens/add/AddTodo';
+import Todos from '../screens/Todos';
+import AddTodo from '../screens/AddTodo';
 
 const config = {
     headerMode: 'none'

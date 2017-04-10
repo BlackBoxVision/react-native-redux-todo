@@ -11,7 +11,7 @@
             "message-complete": "There are no complete todos",
             "todo-title": "Title",
             "todo-description": "Description",
-            "todo-submit": "Submit TODO",
+            "todo-submit": "Submit Todo",
             "is-completed": "Is Completed",
             "remove-todo": "Remove"
         }
@@ -28,7 +28,7 @@
             "message-complete": "There are no complete todos",
             "todo-title": "Title",
             "todo-description": "Description",
-            "todo-submit": "Submit TODO",
+            "todo-submit": "Submit Todo",
             "is-completed": "Is Completed",
             "remove-todo": "Remove"
         }
@@ -45,7 +45,7 @@
             "message-complete": "No hay ninguna tarea completa",
             "todo-title": "Titulo",
             "todo-description": "Descripción",
-            "todo-submit": "Agregar TODO",
+            "todo-submit": "Agregar Todo",
             "is-completed": "Completado",
             "remove-todo": "Eliminar"
         }
@@ -62,7 +62,7 @@
             "message-complete": "No hay ninguna tarea completa",
             "todo-title": "Titulo",
             "todo-description": "Descripción",
-            "todo-submit": "Agregar TODO",
+            "todo-submit": "Agregar Todo",
             "is-completed": "Completado",
             "remove-todo": "Eliminar"
         }

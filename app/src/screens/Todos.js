@@ -6,14 +6,14 @@ import connect from 'react-redux/lib/connect/connect';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 
-import FloatingButton from '../../common/FloatingButton';
-import TodoList from './components/TodoList';
-import Footer from './components/Footer';
+import FloatingButton from '../components/common/FloatingButton';
+import TodoList from '../components/list/TodoList';
+import Footer from '../components/list/Footer';
 
-import withBackButton from '../../common/hoc/withBackButton';
+import withBackButton from '../components/common/hoc/withBackButton';
 
-import * as TodoActions from '../../redux/logic/todo/actions';
-import * as TodoSelectors from '../../redux/logic/todo/selector';
+import * as TodoActions from '../redux/todo/actions';
+import * as TodoSelectors from '../redux/todo/selector';
 
 import app from '../../../app.json';
 
@@ -47,7 +47,7 @@ export default class Todos extends React.Component {
 
         return (
             <Container>
-                <Header searchBar rounded style={styles.header}>
+                <Header style={styles.header}>
                     <Left>
                         <Title style={styles.title}>
                             {app.displayName}
