@@ -1,20 +1,10 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { func } from 'prop-types';
-import { Form, InputGroup, Input, Button, Text, Body } from 'native-base';
+import { Form, Button, Text, Body } from 'native-base';
 import { Field } from 'redux-form';
 
-const TextInput = ({ input, meta, ...inputProps }) => (
-    <InputGroup underline>
-        <Input
-            onChangeText={input.onChange}
-            onBlur={input.onBlur}
-            onFocus={input.onFocus}
-            value={input.value}
-            {...inputProps}
-        />
-    </InputGroup>
-);
+import TextInput from './TextInput';
 
 export default class TodoForm extends React.Component {
     static propTypes = {
@@ -23,7 +13,8 @@ export default class TodoForm extends React.Component {
     };
 
     render() {
-        const { props } = this;
+        const { props, getStyles, getMessage } = this;
+        const styles = getStyles(props);
 
         return (
             <Form>
@@ -40,17 +31,13 @@ export default class TodoForm extends React.Component {
                     />
                     <Button
                         onPress={props.handleSubmit}
-                        style={{
-                            paddingHorizontal: 8,
-                            backgroundColor: '#673AB7',
-                            marginTop: 8
-                        }}
-                        full
+                        style={styles.button}
                         primary
+                        full
                     >
                         <Body>
-                            <Text style={{ color: '#FFFFFF' }}>
-                                {Platform.OS === 'ios' ? props.t('todo-submit') : props.t('todo-submit').toUpperCase()}
+                            <Text style={styles.text}>
+                                {getMessage(props)}
                             </Text>
                         </Body>
                     </Button>
@@ -58,4 +45,18 @@ export default class TodoForm extends React.Component {
             </Form>
         );
     }
+
+    getStyles = (props) => ({
+        button: {
+            height: Platform.OS === 'android' ? 36 : 40,
+            paddingHorizontal: 8,
+            backgroundColor: '#673AB7',
+            marginTop: 8
+        },
+        text: {
+            color: '#FFFFFF'
+        }
+    });
+
+    getMessage = (props) => Platform.OS === 'ios' ? props.t('todo-submit') : props.t('todo-submit').toUpperCase();
 }

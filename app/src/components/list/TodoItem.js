@@ -25,8 +25,10 @@ export default class TodoItem extends React.Component {
     };
 
     render() {
-        const { props, getStyles, getMessage } = this;
+        const { props, getStyles } = this;
         const styles = getStyles(props);
+
+        console.info(Platform.OS === 'ios' ? this.props.toggleMessage : this.props.toggleMessage.toUpperCase());
 
         return (
             <Card style={styles.card}>
@@ -39,7 +41,7 @@ export default class TodoItem extends React.Component {
                     <Text
                         ellipsizeMode="tail"
                         numberOfLines={1}
-                        style={styles.text}
+                        style={{...styles.text, flex: 1}}
                     >
                         {props.title}
                     </Text>
@@ -60,7 +62,7 @@ export default class TodoItem extends React.Component {
                                 style={styles.checkbox}
                             />
                             <Text style={styles.text}>
-                                {getMessage(props, 'toggleMessage')}
+                                {Platform.OS === 'ios' ? this.props.toggleMessage : this.props.toggleMessage.toUpperCase()}
                             </Text>
                         </Button>
                     </Left>
@@ -78,7 +80,7 @@ export default class TodoItem extends React.Component {
                                 color={props.color}
                             />
                             <Text style={styles.text}>
-                                {getMessage(props, 'removeMessage')}
+                                {Platform.OS === 'ios' ? this.props.removeMessage : this.props.removeMessage.toUpperCase()}
                             </Text>
                         </Button>
                     </Right>
@@ -99,10 +101,7 @@ export default class TodoItem extends React.Component {
         },
         text: {
             color: props.color,
-            marginLeft: 8,
-            flex: 1
+            marginLeft: 8
         }
     });
-
-    getMessage = (props, key) => Platform.OS === 'ios' ? props[key] : props[key].toUpperCase()
 }
