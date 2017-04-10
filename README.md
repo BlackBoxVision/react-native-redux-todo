@@ -1,5 +1,5 @@
 # React Native Redux Todo
-> Showcase App for React Native + Redux
+> :iphone:  Showcase React Native Todo App
 
 ## About
 
@@ -9,6 +9,14 @@ This App is a sample showcase of how to build a React Native app that supports:
 - State Management
 - Theming
 
+## App Stack
+
+The app is built with the following libraries: 
+- i18next (**I18n/I10n**)
+- react-navigation (**Screen Management**)
+- redux (**State management**)
+- native-base (**Top level components using React Native building blocks**)
+
 ## Screenshots
 
 Here we have some app screenshots:
@@ -16,14 +24,18 @@ Here we have some app screenshots:
 ### IOS
 
 <div style="display:inline-block;">
-<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/add-todo.png" width="250" height="450"/>
-<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/todo-list.png" width="250" height="450"/>
-<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/todo-item-complete.png" width="250" height="450"/>
+<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/ios/add-todo.png" width="250" height="450"/>
+<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/ios/todo-list.png" width="250" height="450"/>
+<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/ios/todo-item-complete.png" width="250" height="450"/>
 </div>
 
 ### Android 
 
-[coming soon..]
+<div style="display:inline-block;">
+<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/android/add-todo.png" width="250" height="450"/>
+<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/android/todo-list.png" width="250" height="450"/>
+<img src="https://github.com/BlackBoxVision/react-native-redux-todo/blob/master/screenshots/android/todo-item-complete.png" width="250" height="450"/>
+</div>
 
 ## Issues
 
