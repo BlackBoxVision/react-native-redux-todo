@@ -45,7 +45,7 @@ If you found a bug, or you have an answer, or whatever. Please, open an [issue](
 
 ## Contributing
 
-Of course, if you see something that you want to upgrade from this library, or a bug that needs to be solved, **PRs are welcome!**
+Of course, if you see something that you want to upgrade from this project, or a bug that needs to be solved, **PRs are welcome!**
 
 ## License
 
