@@ -61,7 +61,7 @@ export default class Todos extends React.Component {
                 />
                 <FloatingButton onPress={this.addTodo}/>
                 <Footer
-                    filter={this.props.filter}
+                    currentFilter={this.props.filter}
                     changeFilter={this.props.actions.visibilityFilter}
                 />
             </Container>

@@ -22,14 +22,14 @@ const enhance = compose(
     connect(null, mapDispatchToProps),
     reduxForm({ form: 'todo' }),
     withBackButton(),
-    translate(),
+    translate(null, { translateFuncName: 'translate' }),
     pure
 );
 
 @enhance
 export default class AddTodo extends React.Component {
     static propTypes = {
-        t: func.isRequired,
+        translate: func.isRequired,
         navigation: object.isRequired,
         actions: objectOf(func).isRequired
     };
@@ -47,14 +47,14 @@ export default class AddTodo extends React.Component {
                     </Left>
                     <Body>
                         <Title style={styles.title}>
-                            {this.translate('title')}
+                            {this.props.translate('title')}
                         </Title>
                     </Body>
                     <Right />
                 </Header>
                 <Content contentContainerStyle={styles.content}>
                     <AddTodoForm
-                        translate={this.translate}
+                        translate={this.props.translate}
                         onSubmit={this.handleSubmit()}
                     />
                 </Content>
@@ -81,15 +81,11 @@ export default class AddTodo extends React.Component {
         }
     });
 
-    translate = (key, conf = {}) => this.props.t(key, conf);
-
     handleSubmit = () => this.props.handleSubmit(this.submitTodo);
 
     goBack = _ => this.props.navigation.goBack();
 
     submitTodo = (values) => {
-        console.info('calling submit todo');
-
         if (Object.keys(values).length === 0) {
             return;
         }

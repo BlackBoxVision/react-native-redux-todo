@@ -10,16 +10,16 @@ import withIcons from '../common/hoc/withIcons';
 import FooterItem from './FooterItem';
 
 const enhance = compose(
-    translate(),
+    translate(null, { translateFuncName: 'translate' }),
     withIcons()
 );
 
 @enhance
 export default class TodoFooter extends React.Component {
     static propTypes = {
-        filter: string.isRequired,
+        currentFilter: string.isRequired,
         backgroundColor: string.isRequired,
-        t: func.isRequired,
+        translate: func.isRequired,
         changeFilter: func.isRequired,
         tabs: arrayOf(string).isRequired
     };
@@ -34,7 +34,7 @@ export default class TodoFooter extends React.Component {
 
         return (
             <Footer style={styles.footer}>
-                {this.props.tabs.map(this.getItemRenderer)}
+                {this.props.tabs.map(this.renderTab)}
             </Footer>
         )
     }
@@ -45,16 +45,13 @@ export default class TodoFooter extends React.Component {
         }
     });
 
-    translate = (key, conf = {}) => this.props.t(key, conf);
-
-    getItemRenderer = (item, index) => (
+    renderTab = (tabName, index) => (
         <FooterItem
             key={`footer-item-key${index}`}
-            icon={this.props.getIcon(`filter-${item}`)}
-            filter={item}
-            message={this.translate(item)}
-            currentFilter={this.props.filter}
-            changeFilter={() => this.props.changeFilter(item)}
+            message={this.props.translate(tabName)}
+            icon={this.props.getIcon(`filter-${tabName}`)}
+            changeFilter={() => this.props.changeFilter(tabName)}
+            isCurrentFilter={tabName === this.props.currentFilter}
         />
     );
 }

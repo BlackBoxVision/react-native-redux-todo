@@ -6,6 +6,8 @@ import { Field } from 'redux-form';
 
 import TextInput from './TextInput';
 
+import TextHelpers from '../../util/TextHelpers';
+
 export default class TodoForm extends React.Component {
     static propTypes = {
         translate: func.isRequired,
@@ -14,6 +16,7 @@ export default class TodoForm extends React.Component {
 
     render() {
         const styles = this.getStyles(this.props);
+        const submitMessage =  this.props.translate('todo-submit');
 
         return (
             <Form>
@@ -21,12 +24,12 @@ export default class TodoForm extends React.Component {
                     <Field
                         name='title'
                         component={TextInput}
-                        placeholder={this.translate('todo-title')}
+                        placeholder={this.props.translate('todo-title')}
                     />
                     <Field
                         name='description'
                         component={TextInput}
-                        placeholder={this.translate('todo-description')}
+                        placeholder={this.props.translate('todo-description')}
                     />
                     <Button
                         onPress={this.props.onSubmit}
@@ -36,7 +39,7 @@ export default class TodoForm extends React.Component {
                     >
                         <Body>
                             <Text style={styles.text}>
-                                {this.getMessage()}
+                                {TextHelpers.textByPlatform(submitMessage)}
                             </Text>
                         </Body>
                     </Button>
@@ -56,12 +59,4 @@ export default class TodoForm extends React.Component {
             color: '#FFFFFF'
         }
     });
-
-    translate = (key, conf = {}) => this.props.translate(key, conf);
-
-    getMessage = _ => {
-        const message = this.translate('todo-submit');
-
-        return Platform.OS === 'ios' ? message : message.toUpperCase();
-    };
 }

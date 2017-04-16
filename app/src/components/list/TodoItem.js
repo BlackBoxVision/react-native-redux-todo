@@ -1,8 +1,9 @@
 import React from 'react';
 import { number, bool, string, func } from 'prop-types';
-import { Platform } from 'react-native';
 import { Button, Card, CardItem, Text, CheckBox, Left, Body, Right } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import TextHelpers from '../../util/TextHelpers';
 
 export default class TodoItem extends React.Component {
     static propTypes = {
@@ -59,7 +60,7 @@ export default class TodoItem extends React.Component {
                                 style={styles.checkbox}
                             />
                             <Text style={styles.text}>
-                                {Platform.OS === 'ios' ? this.props.toggleMessage : this.props.toggleMessage.toUpperCase()}
+                                {TextHelpers.textByPlatform(this.props.toggleMessage)}
                             </Text>
                         </Button>
                     </Left>
@@ -77,7 +78,7 @@ export default class TodoItem extends React.Component {
                                 color={this.props.color}
                             />
                             <Text style={styles.text}>
-                                {Platform.OS === 'ios' ? this.props.removeMessage : this.props.removeMessage.toUpperCase()}
+                                {TextHelpers.textByPlatform(this.props.removeMessage)}
                             </Text>
                         </Button>
                     </Right>

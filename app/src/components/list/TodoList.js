@@ -10,7 +10,7 @@ import EmptyView from '../common/EmptyView';
 import TodoItem from './TodoItem';
 
 const enhance = compose(
-    translate(),
+    translate(null, { translateFuncName: 'translate' }),
     withIcons()
 );
 
@@ -19,7 +19,7 @@ export default class TodoList extends React.Component {
     static propTypes = {
         filter: string.isRequired,
         items: array.isRequired,
-        t: func.isRequired,
+        translate: func.isRequired,
         getIcon: func.isRequired,
         toggleTodo: func.isRequired,
         removeTodo: func.isRequired
@@ -28,10 +28,24 @@ export default class TodoList extends React.Component {
     render() {
         const styles = this.getStyles(this.props);
 
+        const emptyView = (
+            <EmptyView
+                iconName={this.props.getIcon(`filter-${this.props.filter}`)}
+                text={this.props.translate(`message-${this.props.filter}`)}
+            />
+        );
+
+        const listView = (
+            <List
+                dataArray={this.props.items}
+                renderRow={this.renderTodoItem}
+            />
+        );
+
         return (
             <Content contentContainerStyle={styles.content}>
-                {!this.props.items.length && <EmptyView iconName={this.props.getIcon(`filter-${this.props.filter}`)} text={this.translate(`message-${this.props.filter}`)}/>}
-                {!!this.props.items.length && <List dataArray={this.props.items} renderRow={this.getItemRenderer}/>}
+                {!this.props.items.length && emptyView}
+                {!!this.props.items.length && listView}
             </Content>
         )
     }
@@ -43,18 +57,16 @@ export default class TodoList extends React.Component {
         }
     });
 
-    translate = (key, conf = {}) => this.props.t(key, conf);
-
-    getItemRenderer = ({ key, title, description, completed }, index) => (
+    renderTodoItem = (todo, index) => (
         <TodoItem
             key={`todo-item-key${index}`}
-            title={title}
-            description={description}
-            isCompleted={completed}
-            toggleMessage={this.translate('is-completed')}
-            removeMessage={this.translate('remove-todo')}
-            toggle={() => this.props.toggleTodo(key)}
-            remove={() => this.props.removeTodo(key)}
+            title={todo.title}
+            description={todo.description}
+            isCompleted={todo.completed}
+            toggleMessage={this.props.translate('is-completed')}
+            removeMessage={this.props.translate('remove-todo')}
+            toggle={() => this.props.toggleTodo(todo.key)}
+            remove={() => this.props.removeTodo(todo.key)}
         />
     );
 }

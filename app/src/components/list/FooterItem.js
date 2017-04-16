@@ -1,16 +1,14 @@
 import React from 'react';
-import { func, string, object, number } from 'prop-types';
-import { Platform } from 'react-native';
+import { func, string, object, number, bool } from 'prop-types';
 import { FooterTab, Button, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const capitalize = text => `${text.charAt(0).toUpperCase()}${text.slice(1).toLowerCase()}`;
+import TextHelpers from '../../util/TextHelpers';
 
 export default class FooterItem extends React.Component {
     static propTypes = {
+        isCurrentFilter: bool.isRequired,
         changeFilter: func.isRequired,
-        currentFilter: string.isRequired,
-        filter: string.isRequired,
         message: string.isRequired,
         icon: string.isRequired,
         style: object.isRequired,
@@ -33,23 +31,19 @@ export default class FooterItem extends React.Component {
                     <Icon
                         name={this.props.icon}
                         size={this.props.size}
-                        color={this.getColor(this.props)}
+                        color={this.props.isCurrentFilter ? '#F8BBD0' : '#FFFFFF'}
                     />
                     <Text style={styles.text}>
-                        {this.getMessage()}
+                        {TextHelpers.textByPlatform(this.props.message)}
                     </Text>
                 </Button>
             </FooterTab>
         );
     }
 
-    getColor = props => props.currentFilter === props.filter ? '#F8BBD0' : '#FFFFFF';
-
-    getMessage = () => Platform.OS === 'ios' ? capitalize(this.props.message) : this.props.message.toUpperCase();
-
     getStyles = (props) => ({
         text: {
-            color: props.currentFilter === props.filter ? '#F8BBD0' : '#FFFFFF'
+            color: props.isCurrentFilter ? '#F8BBD0' : '#FFFFFF'
         }
     });
 }
