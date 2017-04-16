@@ -15,8 +15,6 @@ import withBackButton from '../components/common/hoc/withBackButton';
 import * as TodoActions from '../redux/todo/actions';
 import * as TodoSelectors from '../redux/todo/selector';
 
-import app from '../../../app.json';
-
 const mapStateToProps = state => ({
     items: TodoSelectors.getVisibleTodos(state),
     filter: state.todo.filter
@@ -34,6 +32,8 @@ const enhance = compose(
 
 @enhance
 export default class Todos extends React.Component {
+    static displayName = 'Todo App';
+
     static propTypes = {
         items: array.isRequired,
         filter: string.isRequired,
@@ -49,7 +49,7 @@ export default class Todos extends React.Component {
                 <Header style={styles.header}>
                     <Left>
                         <Title style={styles.title}>
-                            {app.displayName}
+                            {Todos.displayName}
                         </Title>
                     </Left>
                 </Header>
