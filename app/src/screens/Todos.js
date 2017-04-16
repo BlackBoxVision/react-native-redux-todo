@@ -1,12 +1,15 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { array, string, object, objectOf, func } from 'prop-types';
-import { Container, Header, Left, Title } from 'native-base';
+import { Container, Header, Left, Right, Title, Button, Body } from 'native-base';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import bindActionCreators from 'redux/lib/bindActionCreators';
 import connect from 'react-redux/lib/connect/connect';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 
-import FloatingButton from '../components/common/FloatingButton';
+
+import FloatingActionButton from '../components/common/FloatingButton';
 import TodoList from '../components/list/TodoList';
 import Footer from '../components/list/Footer';
 
@@ -44,14 +47,34 @@ export default class Todos extends React.Component {
     render() {
         const styles = this.getStyles(this.props);
 
+        const addTodoButton = (
+            <Right>
+                <Button
+                    onPress={this.addTodo}
+                    transparent
+                >
+                    <Icon
+                        name='add'
+                        size={30}
+                        color='#FFFFFF'
+                    />
+                </Button>
+            </Right>
+        );
+
+        const title = (
+            <Title style={styles.title}>
+                {Todos.displayName}
+            </Title>
+        );
+
         return (
             <Container>
                 <Header style={styles.header}>
-                    <Left>
-                        <Title style={styles.title}>
-                            {Todos.displayName}
-                        </Title>
-                    </Left>
+                    {Platform.OS === 'ios' && <Left/>}
+                    {Platform.OS === 'ios' && <Body>{title}</Body>}
+                    {Platform.OS === 'ios' && addTodoButton}
+                    {Platform.OS === 'android' && <Left>{title}</Left>}
                 </Header>
                 <TodoList
                     items={this.props.items}
@@ -59,7 +82,7 @@ export default class Todos extends React.Component {
                     toggleTodo={this.props.actions.toggleTodo}
                     removeTodo={this.props.actions.removeTodo}
                 />
-                <FloatingButton onPress={this.addTodo}/>
+                {Platform.OS === 'android' && <FloatingActionButton onPress={this.addTodo}/>}
                 <Footer
                     currentFilter={this.props.filter}
                     changeFilter={this.props.actions.visibilityFilter}
