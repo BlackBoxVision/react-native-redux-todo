@@ -1,8 +1,9 @@
 import React from 'react';
 
-import i18n from './config/i18n';
-import icons from '../res/icons.json';
+import icons from '../res/icons';
+import resources from '../res/strings';
 
+import configureI18n from './config/i18n';
 import configureStore from './config/store';
 
 import ScreenManager from './components/Manager';
@@ -14,7 +15,7 @@ import withStatusBar from './components/common/hoc/withBar';
 export default class TodoApp extends React.Component {
     render() {
         return (
-            <DataProvider store={configureStore()} icons={icons} i18n={i18n}>
+            <DataProvider store={configureStore()} i18n={configureI18n(resources)} icons={icons}>
                 <ScreenManager/>
             </DataProvider>
         );

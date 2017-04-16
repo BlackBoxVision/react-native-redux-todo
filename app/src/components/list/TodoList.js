@@ -26,13 +26,12 @@ export default class TodoList extends React.Component {
     };
 
     render() {
-        const { props, getStyles, getItemRenderer } = this;
-        const styles = getStyles(props);
+        const styles = this.getStyles(this.props);
 
         return (
             <Content contentContainerStyle={styles.content}>
-                {!props.items.length && <EmptyView iconName={props.getIcon(`filter-${props.filter}`)} text={props.t(`message-${props.filter}`)}/>}
-                {!!props.items.length && <List dataArray={props.items} renderRow={getItemRenderer(props, styles)}/>}
+                {!this.props.items.length && <EmptyView iconName={this.props.getIcon(`filter-${this.props.filter}`)} text={this.translate(`message-${this.props.filter}`)}/>}
+                {!!this.props.items.length && <List dataArray={this.props.items} renderRow={this.getItemRenderer}/>}
             </Content>
         )
     }
@@ -44,16 +43,18 @@ export default class TodoList extends React.Component {
         }
     });
 
-    getItemRenderer = (props, styles) => ({ key, title, description, completed }, index) => (
+    translate = (key, conf = {}) => this.props.t(key, conf);
+
+    getItemRenderer = ({ key, title, description, completed }, index) => (
         <TodoItem
             key={`todo-item-key${index}`}
             title={title}
             description={description}
             isCompleted={completed}
-            toggleMessage={props.t('is-completed')}
-            removeMessage={props.t('remove-todo')}
-            toggle={() => props.toggleTodo(key)}
-            remove={() => props.removeTodo(key)}
+            toggleMessage={this.translate('is-completed')}
+            removeMessage={this.translate('remove-todo')}
+            toggle={() => this.props.toggleTodo(key)}
+            remove={() => this.props.removeTodo(key)}
         />
     );
 }

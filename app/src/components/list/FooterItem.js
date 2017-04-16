@@ -18,23 +18,25 @@ export default class FooterItem extends React.Component {
     };
 
     static defaultProps = {
-        size: 20
+        size: 20,
+        style: {
+            backgroundColor: '#673AB7'
+        }
     };
 
     render() {
-        const { props, getStyles, getColor, getMessage } = this;
-        const styles = getStyles(props);
+        const styles = this.getStyles(this.props);
 
         return (
-            <FooterTab style={props.style}>
-                <Button onPress={props.changeFilter}>
+            <FooterTab style={this.props.style}>
+                <Button onPress={this.props.changeFilter}>
                     <Icon
-                        name={props.icon}
-                        size={props.size}
-                        color={getColor(props)}
+                        name={this.props.icon}
+                        size={this.props.size}
+                        color={this.getColor(this.props)}
                     />
                     <Text style={styles.text}>
-                        {getMessage()}
+                        {this.getMessage()}
                     </Text>
                 </Button>
             </FooterTab>

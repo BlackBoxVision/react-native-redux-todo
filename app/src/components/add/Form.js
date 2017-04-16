@@ -8,13 +8,12 @@ import TextInput from './TextInput';
 
 export default class TodoForm extends React.Component {
     static propTypes = {
-        t: func.isRequired,
-        handleSubmit: func.isRequired
+        translate: func.isRequired,
+        onSubmit: func.isRequired
     };
 
     render() {
-        const { props, getStyles, getMessage } = this;
-        const styles = getStyles(props);
+        const styles = this.getStyles(this.props);
 
         return (
             <Form>
@@ -22,22 +21,22 @@ export default class TodoForm extends React.Component {
                     <Field
                         name='title'
                         component={TextInput}
-                        placeholder={props.t('todo-title')}
+                        placeholder={this.translate('todo-title')}
                     />
                     <Field
                         name='description'
                         component={TextInput}
-                        placeholder={props.t('todo-description')}
+                        placeholder={this.translate('todo-description')}
                     />
                     <Button
-                        onPress={props.handleSubmit}
+                        onPress={this.props.onSubmit}
                         style={styles.button}
                         primary
                         full
                     >
                         <Body>
                             <Text style={styles.text}>
-                                {getMessage(props)}
+                                {this.getMessage()}
                             </Text>
                         </Body>
                     </Button>
@@ -58,5 +57,11 @@ export default class TodoForm extends React.Component {
         }
     });
 
-    getMessage = (props) => Platform.OS === 'ios' ? props.t('todo-submit') : props.t('todo-submit').toUpperCase();
+    translate = (key, conf = {}) => this.props.translate(key, conf);
+
+    getMessage = _ => {
+        const message = this.translate('todo-submit');
+
+        return Platform.OS === 'ios' ? message : message.toUpperCase();
+    };
 }

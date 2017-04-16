@@ -30,12 +30,11 @@ export default class TodoFooter extends React.Component {
     };
 
     render() {
-        const { props, getStyles, getItemRenderer } = this;
-        const styles = getStyles(props);
+        const styles = this.getStyles(this.props);
 
         return (
             <Footer style={styles.footer}>
-                {props.tabs.map(getItemRenderer(props, styles))}
+                {this.props.tabs.map(this.getItemRenderer)}
             </Footer>
         )
     }
@@ -46,15 +45,16 @@ export default class TodoFooter extends React.Component {
         }
     });
 
-    getItemRenderer = (props, styles) => (item, index) => (
+    translate = (key, conf = {}) => this.props.t(key, conf);
+
+    getItemRenderer = (item, index) => (
         <FooterItem
             key={`footer-item-key${index}`}
-            icon={props.getIcon(`filter-${item}`)}
+            icon={this.props.getIcon(`filter-${item}`)}
             filter={item}
-            message={props.t(item)}
-            currentFilter={props.filter}
-            changeFilter={() => props.changeFilter(item)}
-            style={styles.footer}
+            message={this.translate(item)}
+            currentFilter={this.props.filter}
+            changeFilter={() => this.props.changeFilter(item)}
         />
     );
 }

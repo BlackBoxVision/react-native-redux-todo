@@ -42,8 +42,7 @@ export default class Todos extends React.Component {
     };
 
     render() {
-        const { props, getStyles, addTodo } = this;
-        const styles = getStyles(props);
+        const styles = this.getStyles(this.props);
 
         return (
             <Container>
@@ -55,15 +54,15 @@ export default class Todos extends React.Component {
                     </Left>
                 </Header>
                 <TodoList
-                    items={props.items}
-                    filter={props.filter}
-                    toggleTodo={props.actions.toggleTodo}
-                    removeTodo={props.actions.removeTodo}
+                    items={this.props.items}
+                    filter={this.props.filter}
+                    toggleTodo={this.props.actions.toggleTodo}
+                    removeTodo={this.props.actions.removeTodo}
                 />
-                <FloatingButton onPress={addTodo}/>
+                <FloatingButton onPress={this.addTodo}/>
                 <Footer
-                    filter={props.filter}
-                    changeFilter={props.actions.visibilityFilter}
+                    filter={this.props.filter}
+                    changeFilter={this.props.actions.visibilityFilter}
                 />
             </Container>
         );

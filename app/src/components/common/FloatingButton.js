@@ -27,24 +27,23 @@ export default class FloatingButton extends React.Component {
     }
 
     render() {
-        const { props, getStyles } = this;
-        const styles = getStyles(props);
+        const styles = this.getStyles(this.props);
 
         return (
             <Fab
-                active={props.active}
-                direction={props.direction}
-                position={props.position}
-                onPress={props.onPress}
+                active={this.props.active}
+                direction={this.props.direction}
+                position={this.props.position}
+                onPress={this.props.onPress}
                 containerStyle={styles.fabContainer}
                 style={styles.fab}
             >
                 <Icon
-                    name={props.iconName}
-                    size={props.iconSize}
-                    color={props.iconColor}
+                    name={this.props.iconName}
+                    size={this.props.iconSize}
+                    color={this.props.iconColor}
                 />
-                {props.children}
+                {this.props.children}
             </Fab>
         )
     }

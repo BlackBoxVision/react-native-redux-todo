@@ -20,18 +20,17 @@ export default class EmptyView extends React.Component {
     };
 
     render() {
-        const { props, getStyles } = this;
-        const styles = getStyles(props);
+        const styles = this.getStyles(this.props);
 
         return (
             <View style={styles.container}>
                 <Icon
-                    name={props.iconName}
-                    size={props.size}
-                    color={props.iconColor}
+                    name={this.props.iconName}
+                    size={this.props.size}
+                    color={this.props.iconColor}
                 />
                 <Text style={styles.text}>
-                    {props.text}
+                    {this.props.text}
                 </Text>
             </View>
         )

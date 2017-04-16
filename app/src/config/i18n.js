@@ -1,16 +1,19 @@
 import { NativeModules, Platform } from 'react-native';
 import i18next from 'i18next';
 
-import translations from '../../res/strings.json';
+export function getLocale() {
+    const { SettingsManager, I18nManager } = NativeModules;
 
-function getLocale() {
-    return Platform.OS === 'ios' ? NativeModules.SettingsManager.settings.AppleLocale : NativeModules.I18nManager.localeIdentifier;
+    if (Platform.OS === 'ios') {
+        return SettingsManager.settings.AppleLocale;
+    } else {
+        return I18nManager.localeIdentifier;
+    }
 }
 
-const locale = getLocale();
+export default function configureI18n(resources, browserLocale = getLocale(), defaultLocale = 'en') {
+    const lng = browserLocale ? browserLocale.replace(/_/, '-') : defaultLocale;
+    const fallbackLng = defaultLocale;
 
-export default i18next.init({
-    fallbackLng: 'en',
-    lng: locale ? locale.replace(/_/, '-') : 'en',
-    resources: translations
-});
+    return i18next.init({ fallbackLng, lng, resources });
+}

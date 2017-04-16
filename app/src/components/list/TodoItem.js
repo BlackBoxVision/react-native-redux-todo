@@ -25,40 +25,37 @@ export default class TodoItem extends React.Component {
     };
 
     render() {
-        const { props, getStyles } = this;
-        const styles = getStyles(props);
-
-        console.info(Platform.OS === 'ios' ? this.props.toggleMessage : this.props.toggleMessage.toUpperCase());
+        const styles = this.getStyles(this.props);
 
         return (
             <Card style={styles.card}>
                 <CardItem header>
                     <Icon
                         name="assignment"
-                        size={props.size}
-                        color={props.color}
+                        size={this.props.size}
+                        color={this.props.color}
                     />
                     <Text
                         ellipsizeMode="tail"
                         numberOfLines={1}
                         style={{...styles.text, flex: 1}}
                     >
-                        {props.title}
+                        {this.props.title}
                     </Text>
                 </CardItem>
                 <CardItem content>
-                    <Text>{props.description}</Text>
+                    <Text>{this.props.description}</Text>
                 </CardItem>
                 <CardItem footer>
                     <Left>
                         <Button
-                            onPress={props.toggle}
+                            onPress={this.props.toggle}
                             transparent
                         >
                             <CheckBox
-                                color={props.color}
-                                onPress={props.toggle}
-                                checked={props.isCompleted}
+                                color={this.props.color}
+                                onPress={this.props.toggle}
+                                checked={this.props.isCompleted}
                                 style={styles.checkbox}
                             />
                             <Text style={styles.text}>
@@ -69,15 +66,15 @@ export default class TodoItem extends React.Component {
                     <Body/>
                     <Right>
                         <Button
-                            onPress={props.remove}
+                            onPress={this.props.remove}
                             style={styles.button}
                             transparent
                         >
                             <Icon
-                                onPress={props.remove}
-                                name={props.iconName}
-                                size={props.size}
-                                color={props.color}
+                                onPress={this.props.remove}
+                                name={this.props.iconName}
+                                size={this.props.size}
+                                color={this.props.color}
                             />
                             <Text style={styles.text}>
                                 {Platform.OS === 'ios' ? this.props.removeMessage : this.props.removeMessage.toUpperCase()}

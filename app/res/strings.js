@@ -1,4 +1,4 @@
-{
+export default {
     "en": {
         "translation": {
             "all": "all",
@@ -67,4 +67,4 @@
             "remove-todo": "Eliminar"
         }
     }
-}
+};

@@ -35,28 +35,27 @@ export default class AddTodo extends React.Component {
     };
 
     render() {
-        const { props, getStyles, goBack, submitTodo } = this;
-        const styles = getStyles(props);
+        const styles = this.getStyles(this.props);
 
         return (
             <Container>
                 <Header style={styles.header}>
                     <Left>
-                        <Button onPress={goBack(props)} transparent>
+                        <Button onPress={this.goBack} transparent>
                             <Icon name='arrow-back' style={styles.icon}/>
                         </Button>
                     </Left>
                     <Body>
                         <Title style={styles.title}>
-                            {props.t('title')}
+                            {this.translate('title')}
                         </Title>
                     </Body>
                     <Right />
                 </Header>
                 <Content contentContainerStyle={styles.content}>
                     <AddTodoForm
-                        t={props.t}
-                        handleSubmit={props.handleSubmit(submitTodo)}
+                        translate={this.translate}
+                        onSubmit={this.handleSubmit()}
                     />
                 </Content>
             </Container>
@@ -82,9 +81,15 @@ export default class AddTodo extends React.Component {
         }
     });
 
-    goBack = props => _ => props.navigation.goBack();
+    translate = (key, conf = {}) => this.props.t(key, conf);
+
+    handleSubmit = () => this.props.handleSubmit(this.submitTodo);
+
+    goBack = _ => this.props.navigation.goBack();
 
     submitTodo = (values) => {
+        console.info('calling submit todo');
+
         if (Object.keys(values).length === 0) {
             return;
         }
