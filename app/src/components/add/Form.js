@@ -20,30 +20,28 @@ export default class TodoForm extends React.Component {
 
         return (
             <Form>
-                <Form>
-                    <Field
-                        name='title'
-                        component={TextInput}
-                        placeholder={this.props.translate('todo-title')}
-                    />
-                    <Field
-                        name='description'
-                        component={TextInput}
-                        placeholder={this.props.translate('todo-description')}
-                    />
-                    <Button
-                        onPress={this.props.onSubmit}
-                        style={styles.button}
-                        primary
-                        full
-                    >
-                        <Body>
-                            <Text style={styles.text}>
-                                {TextHelpers.textByPlatform(submitMessage)}
-                            </Text>
-                        </Body>
-                    </Button>
-                </Form>
+                <Field
+                    name='title'
+                    component={TextInput}
+                    placeholder={this.props.translate('todo-title')}
+                />
+                <Field
+                    name='description'
+                    component={TextInput}
+                    placeholder={this.props.translate('todo-description')}
+                />
+                <Button
+                    onPress={this.props.onSubmit}
+                    style={styles.button}
+                    primary
+                    full
+                >
+                    <Body>
+                        <Text style={styles.text}>
+                            {TextHelpers.textByPlatform(submitMessage)}
+                        </Text>
+                    </Body>
+                </Button>
             </Form>
         );
     }
