@@ -1,6 +1,7 @@
 import React from 'react';
 import { string, array, func } from 'prop-types';
-import { Content, List } from 'native-base';
+import { FlatList } from 'react-native';
+import { Content } from 'native-base';
 import translate from 'react-i18next/dist/commonjs/translate';
 import compose from 'recompose/compose';
 
@@ -28,24 +29,25 @@ export default class TodoList extends React.Component {
     render() {
         const styles = this.getStyles(this.props);
 
-        const emptyView = (
+        let contentView = (
             <EmptyView
                 iconName={this.props.getIcon(`filter-${this.props.filter}`)}
                 text={this.props.translate(`message-${this.props.filter}`)}
             />
         );
 
-        const listView = (
-            <List
-                dataArray={this.props.items}
-                renderRow={this.renderTodoItem}
-            />
-        );
+        if (this.props.items.length > 0) {
+            contentView = (
+                <FlatList
+                    data={this.props.items}
+                    renderItem={this.renderTodoItem}
+                />
+            );
+        }
 
         return (
             <Content contentContainerStyle={styles.content}>
-                {!this.props.items.length && emptyView}
-                {!!this.props.items.length && listView}
+                {contentView}
             </Content>
         )
     }
@@ -57,16 +59,16 @@ export default class TodoList extends React.Component {
         }
     });
 
-    renderTodoItem = (todo, index) => (
+    renderTodoItem = ({ item }) => (
         <TodoItem
-            key={`todo-item-key${index}`}
-            title={todo.title}
-            description={todo.description}
-            isCompleted={todo.completed}
+            key={item.key}
+            title={item.title}
+            isCompleted={item.completed}
+            description={item.description}
+            toggle={() => this.props.toggleTodo(item.key)}
+            remove={() => this.props.removeTodo(item.key)}
             toggleMessage={this.props.translate('is-completed')}
             removeMessage={this.props.translate('remove-todo')}
-            toggle={() => this.props.toggleTodo(todo.key)}
-            remove={() => this.props.removeTodo(todo.key)}
         />
     );
 }
