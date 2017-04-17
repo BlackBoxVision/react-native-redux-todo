@@ -1,19 +1,17 @@
-import { StackNavigator } from 'react-navigation';
-
-import Todos from '../screens/Todos';
-import AddTodo from '../screens/AddTodo';
-
-const config = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_navigation_1 = require("react-navigation");
+var Todos_1 = require("../screens/Todos");
+var AddTodo_1 = require("../screens/AddTodo");
+var config = {
     headerMode: 'none'
 };
-
-const routes = {
+var routes = {
     Home: {
-        screen: Todos
+        screen: Todos_1.default
     },
     AddTodo: {
-        screen: AddTodo
+        screen: AddTodo_1.default
     }
 };
-
-export default StackNavigator(routes, config);
+exports.default = react_navigation_1.StackNavigator(routes, config);

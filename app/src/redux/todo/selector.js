@@ -1,18 +1,18 @@
-import { createSelector } from 'reselect';
-
-const getFilter = state => state.todo.filter;
-const getTodos = state => state.todo.items;
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var reselect_1 = require("reselect");
+var getFilter = function (state) { return state.todo.filter; };
+var getTodos = function (state) { return state.todo.items; };
+;
 function getByFilter(filter, items) {
     switch (filter) {
         case 'complete':
-            return items.filter(item => item.completed);
+            return items.filter(function (item) { return item.completed; });
         case 'active':
-            return items.filter(item => !item.completed);
+            return items.filter(function (item) { return !item.completed; });
         case 'all':
         default:
             return items;
     }
 }
-
-export const getVisibleTodos = createSelector([getFilter, getTodos], getByFilter);
+exports.getVisibleTodos = reselect_1.createSelector([getFilter, getTodos], getByFilter);

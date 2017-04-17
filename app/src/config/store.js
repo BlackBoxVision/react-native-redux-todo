@@ -1,46 +1,32 @@
-import { createStore, applyMiddleware, compose  } from 'redux';
-import { createLogger } from 'redux-logger';
-import * as storage from 'redux-storage';
-import createEngine from 'redux-storage-engine-reactnativeasyncstorage';
-import devTools from 'remote-redux-devtools';
-import thunk from 'redux-thunk';
-
-import reducers from '../redux/reducers';
-
-const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
-
-const logger = createLogger({
-    predicate: (getState, action) => isDebuggingInChrome,
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var redux_1 = require("redux");
+var redux_logger_1 = require("redux-logger");
+var storage = require("redux-storage");
+var redux_storage_engine_reactnativeasyncstorage_1 = require("redux-storage-engine-reactnativeasyncstorage");
+var remote_redux_devtools_1 = require("remote-redux-devtools");
+var redux_thunk_1 = require("redux-thunk");
+var reducers_1 = require("../redux/reducers");
+var isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
+var logger = redux_logger_1.createLogger({
+    predicate: function (getState, action) { return isDebuggingInChrome; },
     collapsed: true,
     duration: true,
     diff: true,
 });
-
-export default function configureStore(onComplete = () => {}) {
-    const engine = createEngine('AppTree');
-    const storeMiddleware = storage.createMiddleware(engine);
-
-    const store = createStore(
-        storage.reducer(reducers), //Apply redux-storage so we can persist Redux state to disk
-        compose(
-            applyMiddleware(
-                thunk,
-                storeMiddleware,
-                logger
-            ),
-            devTools(),
-        )
-    );
-
+function configureStore(onComplete) {
+    if (onComplete === void 0) { onComplete = function () { }; }
+    var engine = redux_storage_engine_reactnativeasyncstorage_1.default('AppTree');
+    var storeMiddleware = storage.createMiddleware(engine);
+    var store = redux_1.createStore(storage.reducer(reducers_1.default), //Apply redux-storage so we can persist Redux state to disk
+    redux_1.compose(redux_1.applyMiddleware(redux_thunk_1.default, storeMiddleware, logger), remote_redux_devtools_1.default()));
     if (isDebuggingInChrome) {
         window.store = store;
     }
-
-    const load = storage.createLoader(engine);
-
+    var load = storage.createLoader(engine);
     load(store)
-    .then(onComplete)
-    .catch(() => console.log('Failed to load previous state'));
-
+        .then(onComplete)
+        .catch(function () { return console.log('Failed to load previous state'); });
     return store;
 }
+exports.default = configureStore;

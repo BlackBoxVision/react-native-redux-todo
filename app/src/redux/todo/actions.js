@@ -1,40 +1,41 @@
-import TodoActions from './constants';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var constants_1 = require("./constants");
 //Create an standard flux action
-const createAction = object => dispatch => dispatch(object);
-
-export function toggleTodo(id) {
+var createAction = function (object) { return function (dispatch) { return dispatch(object); }; };
+function toggleTodo(id) {
     return createAction({
-        type: TodoActions.TOGGLE_TODO,
+        type: constants_1.default.TOGGLE_TODO,
         payload: {
-            id
-        }
-    })
-}
-
-export function removeTodo(id) {
-    return createAction({
-        type: TodoActions.REMOVE_TODO,
-        payload: {
-            id
+            id: id
         }
     });
 }
-
-export function addTodo(todo) {
+exports.toggleTodo = toggleTodo;
+function removeTodo(id) {
     return createAction({
-        type: TodoActions.ADD_TODO,
+        type: constants_1.default.REMOVE_TODO,
         payload: {
-            todo
+            id: id
         }
     });
 }
-
-export function visibilityFilter(filter) {
+exports.removeTodo = removeTodo;
+function addTodo(todo) {
     return createAction({
-        type: TodoActions.VISIBILITY_FILTER,
+        type: constants_1.default.ADD_TODO,
         payload: {
-            filter
+            todo: todo
         }
     });
 }
+exports.addTodo = addTodo;
+function visibilityFilter(filter) {
+    return createAction({
+        type: constants_1.default.VISIBILITY_FILTER,
+        payload: {
+            filter: filter
+        }
+    });
+}
+exports.visibilityFilter = visibilityFilter;

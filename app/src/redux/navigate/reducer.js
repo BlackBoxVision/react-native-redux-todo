@@ -1,6 +1,9 @@
-import Navigator from '../../config/navigation';
-
-export default function reducer(state, action) {
-    const newState = Navigator.router.getStateForAction(action, state);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var navigation_1 = require("../../config/navigation");
+function reducer(state, action) {
+    var newState = navigation_1.default.router.getStateForAction(action, state);
     return newState || state;
-};
+}
+exports.default = reducer;
+;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { func, object, objectOf } from 'prop-types';
 import { Container, Content, Header, Body, Title, Button, Left, Icon, Right } from 'native-base';
 import bindActionCreators from 'redux/lib/bindActionCreators';
@@ -26,14 +26,14 @@ const enhance = compose(
     pure
 );
 
-@enhance
-export default class AddTodo extends React.Component {
-    static propTypes = {
-        translate: func.isRequired,
-        navigation: object.isRequired,
-        actions: objectOf(func).isRequired
-    };
+interface Props {
+    translate: Function,
+    navigation: Object,
+    actions: Object
+};
 
+@enhance
+export default class AddTodo extends Component<Props> {
     render() {
         const styles = this.getStyles(this.props);
 

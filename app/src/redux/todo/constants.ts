@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = {
+export default {
     ADD_TODO: 'ADD_TODO',
     TOGGLE_TODO: 'TOGGLE_TODO',
     REMOVE_TODO: 'REMOVE_TODO',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { array, string, object, objectOf, func } from 'prop-types';
 import { Container, Header, Left, Right, Title, Button, Body } from 'native-base';
@@ -7,7 +7,6 @@ import bindActionCreators from 'redux/lib/bindActionCreators';
 import connect from 'react-redux/lib/connect/connect';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
-
 
 import FloatingActionButton from '../components/common/FloatingButton';
 import TodoList from '../components/list/TodoList';
@@ -33,16 +32,23 @@ const enhance = compose(
     pure
 );
 
-@enhance
-export default class Todos extends React.Component {
-    static displayName = 'Todo App';
+interface Props {
+    items: Array<Object>,
+    filter: String,
+    navigation: {
+        navigate: Function,
+        goBack: Function
+    },
+    actions: {
+        toggleTodo: Function,
+        removeTodo: Function,
+        visibilityFilter: Function
+    }
+};
 
-    static propTypes = {
-        items: array.isRequired,
-        filter: string.isRequired,
-        navigation: object.isRequired,
-        actions: objectOf(func).isRequired
-    };
+@enhance
+export default class Todos extends Component<Props> {
+    static displayName = 'Todo App';
 
     render() {
         const styles = this.getStyles(this.props);

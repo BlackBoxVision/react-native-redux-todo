@@ -1,16 +1,21 @@
-import { Platform } from 'react-native';
-
-export default class TextHelpers {
-    static capitalize(text) {
-        return `${text.charAt(0).toUpperCase()}${text.slice(1).toLowerCase()}`;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_native_1 = require("react-native");
+var TextHelpers = (function () {
+    function TextHelpers() {
     }
-
-    static textByPlatform(text) {
-        if (Platform.OS === 'ios') {
+    TextHelpers.capitalize = function (text) {
+        return "" + text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    };
+    TextHelpers.textByPlatform = function (text) {
+        if (react_native_1.Platform.OS === 'ios') {
             return TextHelpers.capitalize(text);
-        } else {
+        }
+        else {
             //Uppercase text on Android applies to button/checkbox/switch labels.
             return text.toUpperCase();
         }
-    }
-}
+    };
+    return TextHelpers;
+}());
+exports.default = TextHelpers;
