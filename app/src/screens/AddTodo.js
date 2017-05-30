@@ -86,7 +86,8 @@ export default class AddTodo extends React.Component {
     goBack = _ => this.props.navigation.goBack();
 
     submitTodo = (values) => {
-        if (Object.keys(values).length === 0) {
+        if (Object.keys(values).length !== 2) {
+            alert(this.props.translate('form'));
             return;
         }
 

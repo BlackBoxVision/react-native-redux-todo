@@ -1,6 +1,7 @@
 export default {
     "en": {
         "translation": {
+            "form": "You should complete all fields.",
             "all": "all",
             "complete": "complete",
             "active": "active",
@@ -18,6 +19,7 @@ export default {
     },
     "en-US": {
         "translation": {
+            "form": "You should complete all fields.",
             "all": "all",
             "complete": "complete",
             "active": "active",
@@ -35,6 +37,7 @@ export default {
     },
     "es-US": {
         "translation": {
+            "form": "Deberias completar todos los campos.",
             "all": "todos",
             "complete": "completos",
             "active": "activos",
@@ -52,6 +55,7 @@ export default {
     },
     "es": {
         "translation": {
+            "form": "Deberias completar todos los campos.",
             "all": "todos",
             "complete": "completos",
             "active": "activos",

@@ -84,14 +84,14 @@ def enableProguardInReleaseBuilds = true
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
-        applicationId "com.todoapp"
+        applicationId "com.samsistemas.todoapp"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -145,7 +145,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 def Properties props = new Properties()
-def propFile = new File('signing.properties')
+def propFile = new File('gradle.properties')
 
 if (propFile.canRead()) {
     props.load(new FileInputStream(propFile))
@@ -156,10 +156,10 @@ if (propFile.canRead()) {
         android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
         android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
     } else {
-        println 'signing.properties found but some entries are missing'
+        println 'gradle.properties found but some entries are missing'
         android.buildTypes.release.signingConfig = null
     }
 } else {
-    println 'signing.properties not found'
+    println 'gradle.properties not found'
     android.buildTypes.release.signingConfig = null
 }

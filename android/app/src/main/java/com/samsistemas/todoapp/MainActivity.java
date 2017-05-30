@@ -1,8 +1,16 @@
-package com.todoapp;
+package com.samsistemas.todoapp;
+
+import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 
-public class MainActivity extends ReactActivity {
+public final class MainActivity extends ReactActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
+        super.onCreate(savedInstanceState);
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.

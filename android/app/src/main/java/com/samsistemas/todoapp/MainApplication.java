@@ -1,4 +1,4 @@
-package com.todoapp;
+package com.samsistemas.todoapp;
 
 import android.app.Application;
 
@@ -12,7 +12,9 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
+import com.samsistemas.todoapp.BuildConfig;
+
+public final class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
