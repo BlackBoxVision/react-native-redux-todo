@@ -16,7 +16,6 @@ export default class TodoForm extends React.Component {
 
     render() {
         const styles = this.getStyles(this.props);
-        const submitMessage = this.props.translate('todo-submit');
 
         return (
             <Form>
@@ -33,7 +32,7 @@ export default class TodoForm extends React.Component {
                 <Button onPress={this.props.onSubmit} style={styles.button} primary full>
                     <Body>
                         <Text style={styles.text}>
-                            {TextHelpers.textByPlatform(submitMessage)}
+                            {TextHelpers.textByPlatform(this.props.translate('todo-submit'))}
                         </Text>
                     </Body>
                 </Button>

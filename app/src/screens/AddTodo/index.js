@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, object, objectOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Container, Content, Header, Body, Title, Button, Left, Icon, Right } from 'native-base';
 import bindActionCreators from 'redux/lib/bindActionCreators';
 import translate from 'react-i18next/dist/commonjs/translate';
@@ -29,9 +29,9 @@ const enhance = compose(
 @enhance
 export default class AddTodo extends React.Component {
     static propTypes = {
-        translate: func.isRequired,
-        navigation: object.isRequired,
-        actions: objectOf(func).isRequired
+        translate: PropTypes.func.isRequired,
+        navigation: PropTypes.object.isRequired,
+        actions: PropTypes.objectOf(PropTypes.func).isRequired
     };
 
     render() {
