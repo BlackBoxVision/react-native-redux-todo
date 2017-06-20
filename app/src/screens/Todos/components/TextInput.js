@@ -6,7 +6,7 @@ export default class TextInput extends React.Component {
     static propTypes = {
         input: object.isRequired,
         meta: object.isRequired
-    }
+    };
 
     render() {
         const { input, meta, ...inputProps } = this.props;
@@ -21,6 +21,6 @@ export default class TextInput extends React.Component {
                     {...inputProps}
                 />
             </InputGroup>
-        )
+        );
     }
 }

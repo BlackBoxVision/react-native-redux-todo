@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose  } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import * as storage from 'redux-storage';
 import createEngine from 'redux-storage-engine-reactnativeasyncstorage';
@@ -13,7 +13,7 @@ const logger = createLogger({
     predicate: (getState, action) => isDebuggingInChrome,
     collapsed: true,
     duration: true,
-    diff: true,
+    diff: true
 });
 
 export default function configureStore(onComplete = () => {}) {
@@ -22,14 +22,7 @@ export default function configureStore(onComplete = () => {}) {
 
     const store = createStore(
         storage.reducer(reducers), //Apply redux-storage so we can persist Redux state to disk
-        compose(
-            applyMiddleware(
-                thunk,
-                storeMiddleware,
-                logger
-            ),
-            devTools(),
-        )
+        compose(applyMiddleware(thunk, storeMiddleware, logger), devTools())
     );
 
     if (isDebuggingInChrome) {
@@ -38,9 +31,7 @@ export default function configureStore(onComplete = () => {}) {
 
     const load = storage.createLoader(engine);
 
-    load(store)
-    .then(onComplete)
-    .catch(() => console.log('Failed to load previous state'));
+    load(store).then(onComplete).catch(() => console.log('Failed to load previous state'));
 
     return store;
 }

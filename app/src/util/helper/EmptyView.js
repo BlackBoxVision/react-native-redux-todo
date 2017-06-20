@@ -10,7 +10,7 @@ export default class EmptyView extends React.Component {
         iconColor: PropTypes.string.isRequired,
         iconName: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
-        size: PropTypes.number.isRequired,
+        size: PropTypes.number.isRequired
     };
 
     static defaultProps = {
@@ -33,15 +33,15 @@ export default class EmptyView extends React.Component {
                     {this.props.text}
                 </Text>
             </View>
-        )
+        );
     }
 
-    getStyles = (props) => ({
+    getStyles = props => ({
         container: {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            paddingTop: (Dimensions.get('window').height / 2) - 100
+            paddingTop: Dimensions.get('window').height / 2 - 100
         },
         text: {
             color: props.color

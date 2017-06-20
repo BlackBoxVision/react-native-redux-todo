@@ -14,7 +14,7 @@ export default class DataProvider extends React.Component {
     static defaultProps = {
         icons: {},
         appTheme: {}
-    }
+    };
 
     static childContextTypes = {
         icons: PropTypes.object.isRequired,

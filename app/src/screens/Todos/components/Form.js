@@ -16,26 +16,21 @@ export default class TodoForm extends React.Component {
 
     render() {
         const styles = this.getStyles(this.props);
-        const submitMessage =  this.props.translate('todo-submit');
+        const submitMessage = this.props.translate('todo-submit');
 
         return (
             <Form>
                 <Field
-                    name='title'
+                    name="title"
                     component={TextInput}
                     placeholder={this.props.translate('todo-title')}
                 />
                 <Field
-                    name='description'
+                    name="description"
                     component={TextInput}
                     placeholder={this.props.translate('todo-description')}
                 />
-                <Button
-                    onPress={this.props.onSubmit}
-                    style={styles.button}
-                    primary
-                    full
-                >
+                <Button onPress={this.props.onSubmit} style={styles.button} primary full>
                     <Body>
                         <Text style={styles.text}>
                             {TextHelpers.textByPlatform(submitMessage)}
@@ -46,7 +41,7 @@ export default class TodoForm extends React.Component {
         );
     }
 
-    getStyles = (props) => ({
+    getStyles = props => ({
         button: {
             height: Platform.OS === 'android' ? 36 : 40,
             paddingHorizontal: 8,

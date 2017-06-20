@@ -10,10 +10,7 @@ import withIcons from '../../../util/helper/hoc/withIcons';
 import EmptyView from '../../../util/helper/EmptyView';
 import TodoItem from './TodoItem';
 
-const enhance = compose(
-    translate(null, { translateFuncName: 'translate' }),
-    withIcons()
-);
+const enhance = compose(translate(null, { translateFuncName: 'translate' }), withIcons());
 
 @enhance
 export default class TodoList extends React.Component {
@@ -37,29 +34,24 @@ export default class TodoList extends React.Component {
         );
 
         if (this.props.items.length > 0) {
-            contentView = (
-                <FlatList
-                    data={this.props.items}
-                    renderItem={this.renderTodoItem}
-                />
-            );
+            contentView = <FlatList data={this.props.items} renderItem={this.renderTodoItem} />;
         }
 
         return (
             <Content contentContainerStyle={styles.content}>
                 {contentView}
             </Content>
-        )
+        );
     }
 
-    getStyles = (props) => ({
+    getStyles = props => ({
         content: {
             justifyContent: 'space-between',
             padding: 8
         }
     });
 
-    renderTodoItem = ({ item }) => (
+    renderTodoItem = ({ item }) =>
         <TodoItem
             key={item.key}
             title={item.title}
@@ -69,6 +61,5 @@ export default class TodoList extends React.Component {
             remove={() => this.props.removeTodo(item.key)}
             toggleMessage={this.props.translate('is-completed')}
             removeMessage={this.props.translate('remove-todo')}
-        />
-    );
+        />;
 }

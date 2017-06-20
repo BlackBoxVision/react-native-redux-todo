@@ -26,11 +26,7 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(TodoActions, dispatch)
 });
 
-const enhance = compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    withBackButton(),
-    pure
-);
+const enhance = compose(connect(mapStateToProps, mapDispatchToProps), withBackButton(), pure);
 
 @enhance
 export default class Todos extends React.Component {
@@ -52,15 +48,8 @@ export default class Todos extends React.Component {
 
         const addTodoButton = (
             <Right>
-                <Button
-                    onPress={this.addTodo}
-                    transparent
-                >
-                    <Icon
-                        name='add'
-                        size={30}
-                        color='#FFFFFF'
-                    />
+                <Button onPress={this.addTodo} transparent>
+                    <Icon name="add" size={30} color="#FFFFFF" />
                 </Button>
             </Right>
         );
@@ -74,7 +63,7 @@ export default class Todos extends React.Component {
         return (
             <Container>
                 <Header style={styles.header}>
-                    {Platform.OS === 'ios' && <Left/>}
+                    {Platform.OS === 'ios' && <Left />}
                     {Platform.OS === 'ios' && <Body>{title}</Body>}
                     {Platform.OS === 'ios' && addTodoButton}
                     {Platform.OS === 'android' && <Left>{title}</Left>}
@@ -85,7 +74,7 @@ export default class Todos extends React.Component {
                     toggleTodo={this.props.actions.toggleTodo}
                     removeTodo={this.props.actions.removeTodo}
                 />
-                {Platform.OS === 'android' && <FloatingActionButton onPress={this.addTodo}/>}
+                {Platform.OS === 'android' && <FloatingActionButton onPress={this.addTodo} />}
                 <Footer
                     currentFilter={this.props.filter}
                     changeFilter={this.props.actions.visibilityFilter}
@@ -94,7 +83,7 @@ export default class Todos extends React.Component {
         );
     }
 
-    getStyles = (props) => ({
+    getStyles = props => ({
         header: {
             backgroundColor: '#673AB7'
         },

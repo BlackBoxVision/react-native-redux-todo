@@ -42,7 +42,7 @@ export default class AddTodo extends React.Component {
                 <Header style={styles.header}>
                     <Left>
                         <Button onPress={this.goBack} transparent>
-                            <Icon name='arrow-back' style={styles.icon}/>
+                            <Icon name="arrow-back" style={styles.icon} />
                         </Button>
                     </Left>
                     <Body>
@@ -53,16 +53,13 @@ export default class AddTodo extends React.Component {
                     <Right />
                 </Header>
                 <Content contentContainerStyle={styles.content}>
-                    <AddTodoForm
-                        translate={this.props.translate}
-                        onSubmit={this.handleSubmit()}
-                    />
+                    <AddTodoForm translate={this.props.translate} onSubmit={this.handleSubmit()} />
                 </Content>
             </Container>
-        )
+        );
     }
 
-    getStyles = (props) => ({
+    getStyles = props => ({
         content: {
             justifyContent: 'space-between',
             padding: 8
@@ -85,7 +82,7 @@ export default class AddTodo extends React.Component {
 
     goBack = _ => this.props.navigation.goBack();
 
-    submitTodo = (values) => {
+    submitTodo = values => {
         if (Object.keys(values).length !== 2) {
             alert(this.props.translate('form'));
             return;

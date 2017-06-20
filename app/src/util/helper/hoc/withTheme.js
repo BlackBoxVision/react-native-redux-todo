@@ -19,10 +19,10 @@ export default function withTheme() {
                         {...this.context}
                         {...this.props}
                     />
-                )
+                );
             }
         }
 
         return ThemableComponent;
-    }
+    };
 }

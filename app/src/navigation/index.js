@@ -15,7 +15,7 @@ export default class ScreenManager extends React.Component {
             <Navigator
                 navigation={addNavigationHelpers({
                     dispatch: this.props.dispatch,
-                    state: this.props.navigate,
+                    state: this.props.navigate
                 })}
             />
         );

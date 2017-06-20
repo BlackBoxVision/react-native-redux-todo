@@ -41,7 +41,7 @@ export default class FooterItem extends React.Component {
         );
     }
 
-    getStyles = (props) => ({
+    getStyles = props => ({
         text: {
             color: props.isCurrentFilter ? '#F8BBD0' : '#FFFFFF'
         }

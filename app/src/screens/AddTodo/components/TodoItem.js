@@ -31,15 +31,11 @@ export default class TodoItem extends React.Component {
         return (
             <Card style={styles.card}>
                 <CardItem header>
-                    <Icon
-                        name="assignment"
-                        size={this.props.size}
-                        color={this.props.color}
-                    />
+                    <Icon name="assignment" size={this.props.size} color={this.props.color} />
                     <Text
                         ellipsizeMode="tail"
                         numberOfLines={1}
-                        style={{...styles.text, flex: 1}}
+                        style={{ ...styles.text, flex: 1 }}
                     >
                         {this.props.title}
                     </Text>
@@ -49,10 +45,7 @@ export default class TodoItem extends React.Component {
                 </CardItem>
                 <CardItem footer>
                     <Left>
-                        <Button
-                            onPress={this.props.toggle}
-                            transparent
-                        >
+                        <Button onPress={this.props.toggle} transparent>
                             <CheckBox
                                 color={this.props.color}
                                 onPress={this.props.toggle}
@@ -64,13 +57,9 @@ export default class TodoItem extends React.Component {
                             </Text>
                         </Button>
                     </Left>
-                    <Body/>
+                    <Body />
                     <Right>
-                        <Button
-                            onPress={this.props.remove}
-                            style={styles.button}
-                            transparent
-                        >
+                        <Button onPress={this.props.remove} style={styles.button} transparent>
                             <Icon
                                 onPress={this.props.remove}
                                 name={this.props.iconName}
@@ -84,10 +73,10 @@ export default class TodoItem extends React.Component {
                     </Right>
                 </CardItem>
             </Card>
-        )
+        );
     }
 
-    getStyles = (props) => ({
+    getStyles = props => ({
         card: {
             borderRadius: 4
         },

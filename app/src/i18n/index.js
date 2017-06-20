@@ -11,7 +11,11 @@ export function getLocale() {
     }
 }
 
-export default function configureI18n(resources, browserLocale = getLocale(), defaultLocale = 'en') {
+export default function configureI18n(
+    resources,
+    browserLocale = getLocale(),
+    defaultLocale = 'en'
+) {
     const lng = browserLocale ? browserLocale.replace(/_/, '-') : defaultLocale;
     const fallbackLng = defaultLocale;
 

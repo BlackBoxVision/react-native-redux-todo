@@ -24,7 +24,7 @@ export default class FloatingButton extends React.Component {
         iconName: 'add',
         iconColor: '#FFFFFF',
         iconSize: 20
-    }
+    };
 
     render() {
         const styles = this.getStyles(this.props);
@@ -45,10 +45,10 @@ export default class FloatingButton extends React.Component {
                 />
                 {this.props.children}
             </Fab>
-        )
+        );
     }
 
-    getStyles = (props) => ({
+    getStyles = props => ({
         fabContainer: {
             bottom: 70
         },

@@ -5,33 +5,28 @@ const initialState = {
     items: []
 };
 
-export default function reducer(state = initialState, action) {
-    const { type, payload } = action;
+export default function reducer(state = initialState, { type, payload }) {
     const { items } = state;
 
     switch (type) {
         case TodoActions.ADD_TODO:
-            const addedItems = items.concat(payload.todo);
-
             return {
                 ...state,
-                items: addedItems
+                items: items.concat(payload.todo)
             };
 
         case TodoActions.TOGGLE_TODO:
-            const newItems = items.map(it => it.key !== payload.id ? it : { ...it, completed: !it.completed });
-
             return {
                 ...state,
-                items: newItems
+                items: items.map(
+                    it => (it.key !== payload.id ? it : { ...it, completed: !it.completed })
+                )
             };
 
         case TodoActions.REMOVE_TODO:
-            const filteredItems = items.filter(it => it.key !== payload.id);
-
             return {
                 ...state,
-                items: filteredItems
+                items: items.filter(it => it.key !== payload.id)
             };
 
         case TodoActions.VISIBILITY_FILTER:

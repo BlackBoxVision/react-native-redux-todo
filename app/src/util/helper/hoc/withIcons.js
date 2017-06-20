@@ -13,13 +13,7 @@ export default function withIcons() {
             }
 
             render() {
-                return (
-                    <ReactComponent
-                        getIcon={this.getIcon}
-                        {...this.context}
-                        {...this.props}
-                    />
-                )
+                return <ReactComponent getIcon={this.getIcon} {...this.context} {...this.props} />;
             }
 
             getIcon = key => {
@@ -30,9 +24,9 @@ export default function withIcons() {
                 }
 
                 return icon;
-            }
+            };
         }
 
         return IconComponent;
-    }
+    };
 }
