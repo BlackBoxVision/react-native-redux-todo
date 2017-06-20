@@ -43,6 +43,9 @@
 		"remote-redux-devtools-on-debugger": "^0.7.0"
 	},
 	"jest": {
-		"preset": "react-native"
+		"preset": "react-native",
+		"transform": {
+			"^.+\\.js$": "babel-jest"
+		}
 	}
 }
