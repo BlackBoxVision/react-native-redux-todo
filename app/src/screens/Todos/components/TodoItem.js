@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Card, CardItem, Text, CheckBox, Left, Body, Right } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import TextHelpers from '../../../util/TextHelpers';
+import TextHelpers from '../../../common/text/TextHelpers';
 
 export default class TodoItem extends React.Component {
     static propTypes = {

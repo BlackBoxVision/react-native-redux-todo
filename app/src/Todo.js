@@ -7,9 +7,9 @@ import configureI18n from './i18n';
 import configureStore from './redux/store';
 
 import ScreenManager from './navigation';
-import DataProvider from './util/helper/DataProvider';
+import DataProvider from './common/DataProvider';
 
-import withStatusBar from './util/helper/hoc/withBar';
+import withStatusBar from './common/hoc/withBar';
 
 @withStatusBar('#512DA8')
 export default class TodoApp extends React.Component {

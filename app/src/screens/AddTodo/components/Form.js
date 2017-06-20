@@ -6,7 +6,7 @@ import { Field } from 'redux-form';
 
 import TextInput from './TextInput';
 
-import TextHelpers from '../../../util/TextHelpers';
+import TextHelpers from '../../../common/text/TextHelpers';
 
 export default class TodoForm extends React.Component {
     static propTypes = {

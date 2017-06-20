@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FooterTab, Button, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import TextHelpers from '../../../util/TextHelpers';
+import TextHelpers from '../../../common/text/TextHelpers';
 
 export default class FooterItem extends React.Component {
     static propTypes = {

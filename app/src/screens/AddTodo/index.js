@@ -9,8 +9,8 @@ import pure from 'recompose/pure';
 
 import { reduxForm } from 'redux-form';
 
-import AddTodoForm from '../Todos/components/Form';
-import withBackButton from '../../util/helper/hoc/withBackButton';
+import AddTodoForm from './components/Form';
+import withBackButton from '../../common/hoc/withBackButton';
 
 import * as TodoActions from '../../redux/todo/actions';
 

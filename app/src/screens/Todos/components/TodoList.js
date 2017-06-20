@@ -5,9 +5,9 @@ import { Content } from 'native-base';
 import translate from 'react-i18next/dist/commonjs/translate';
 import compose from 'recompose/compose';
 
-import withIcons from '../../../util/helper/hoc/withIcons';
+import withIcons from '../../../common/hoc/withIcons';
 
-import EmptyView from '../../../util/helper/EmptyView';
+import EmptyView from '../../../common/EmptyView';
 import TodoItem from './TodoItem';
 
 const enhance = compose(translate(null, { translateFuncName: 'translate' }), withIcons());

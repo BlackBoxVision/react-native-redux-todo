@@ -8,11 +8,11 @@ import connect from 'react-redux/lib/connect/connect';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 
-import FloatingActionButton from '../../util/helper/FloatingButton';
-import TodoList from '../AddTodo/components/TodoList';
-import Footer from '../AddTodo/components/Footer';
+import FloatingActionButton from '../../common/FloatingButton';
+import TodoList from './components/TodoList';
+import Footer from './components/Footer';
 
-import withBackButton from '../../util/helper/hoc/withBackButton';
+import withBackButton from '../../common/hoc/withBackButton';
 
 import * as TodoActions from '../../redux/todo/actions';
 import * as TodoSelectors from '../../redux/todo/selector';
@@ -39,7 +39,7 @@ export default class Todos extends React.Component {
         actions: PropTypes.shape({
             removeTodo: PropTypes.func.isRequired,
             toggleTodo: PropTypes.func.isRequired,
-            visibilityFilter: PropTypes.func.isRequired
+            setVisibilityFilter: PropTypes.func.isRequired
         }).isRequired
     };
 
@@ -77,7 +77,7 @@ export default class Todos extends React.Component {
                 {Platform.OS === 'android' && <FloatingActionButton onPress={this.addTodo} />}
                 <Footer
                     currentFilter={this.props.filter}
-                    changeFilter={this.props.actions.visibilityFilter}
+                    changeFilter={this.props.actions.setVisibilityFilter}
                 />
             </Container>
         );
@@ -94,6 +94,6 @@ export default class Todos extends React.Component {
 
     addTodo = () => {
         this.props.navigation.navigate('AddTodo');
-        this.props.actions.visibilityFilter('all');
+        this.props.actions.setVisibilityFilter('all');
     };
 }

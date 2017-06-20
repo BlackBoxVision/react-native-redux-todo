@@ -5,7 +5,7 @@ import translate from 'react-i18next/dist/commonjs/translate';
 
 import compose from 'recompose/compose';
 
-import withIcons from '../../../util/helper/hoc/withIcons';
+import withIcons from '../../../common/hoc/withIcons';
 
 import FooterItem from './FooterItem';
 
