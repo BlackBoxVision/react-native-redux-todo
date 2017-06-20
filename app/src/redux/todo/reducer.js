@@ -5,7 +5,7 @@ const initialState = {
     items: []
 };
 
-export default function reducer(state = initialState, action) {
+export default (state = initialState, action) => {
     switch (action.type) {
         case TodoActions.ADD_TODO:
             return {
