@@ -1,22 +1,22 @@
 import React from 'react';
-import { number, bool, string, func } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Button, Card, CardItem, Text, CheckBox, Left, Body, Right } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import TextHelpers from '../../util/TextHelpers';
+import TextHelpers from '../../../util/TextHelpers';
 
 export default class TodoItem extends React.Component {
     static propTypes = {
-        size: number.isRequired,
-        isCompleted: bool.isRequired,
-        color: string.isRequired,
-        title: string.isRequired,
-        description: string.isRequired,
-        removeMessage: string.isRequired,
-        toggleMessage: string.isRequired,
-        iconName: string.isRequired,
-        toggle: func.isRequired,
-        remove: func.isRequired
+        size: PropTypes.number.isRequired,
+        isCompleted: PropTypes.bool.isRequired,
+        color: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        removeMessage: PropTypes.string.isRequired,
+        toggleMessage: PropTypes.string.isRequired,
+        iconName: PropTypes.string.isRequired,
+        toggle: PropTypes.func.isRequired,
+        remove: PropTypes.func.isRequired
     };
 
     static defaultProps = {

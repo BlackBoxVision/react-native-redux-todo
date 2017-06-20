@@ -2,7 +2,7 @@ import React from 'react';
 import addNavigationHelpers from 'react-navigation/lib/addNavigationHelpers';
 import connect from 'react-redux/lib/connect/connect';
 
-import Navigator from '../config/navigation';
+import Navigator from './routes';
 
 const mapStateToProps = state => ({
     navigate: state.navigate

@@ -5,7 +5,7 @@ import createEngine from 'redux-storage-engine-reactnativeasyncstorage';
 import devTools from 'remote-redux-devtools';
 import thunk from 'redux-thunk';
 
-import reducers from '../redux/reducers';
+import reducers from './reducers';
 
 const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 

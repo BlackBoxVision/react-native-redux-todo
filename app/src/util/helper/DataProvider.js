@@ -1,14 +1,14 @@
 import React from 'react';
-import { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 
 export default class DataProvider extends React.Component {
     static propTypes = {
-        appTheme: object.isRequired,
-        i18n: object.isRequired,
-        icons: object.isRequired,
-        store: object.isRequired
+        appTheme: PropTypes.object.isRequired,
+        i18n: PropTypes.object.isRequired,
+        icons: PropTypes.object.isRequired,
+        store: PropTypes.object.isRequired
     };
 
     static defaultProps = {
@@ -17,8 +17,8 @@ export default class DataProvider extends React.Component {
     }
 
     static childContextTypes = {
-        icons: object.isRequired,
-        appTheme: object
+        icons: PropTypes.object.isRequired,
+        appTheme: PropTypes.object
     };
 
     getChildContext() {

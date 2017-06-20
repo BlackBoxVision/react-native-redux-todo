@@ -1,19 +1,19 @@
 import React from 'react';
-import { func, string, number, bool, any } from 'prop-types';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Fab } from 'native-base';
 
 export default class FloatingButton extends React.Component {
     static propTypes = {
-        onPress: func.isRequired,
-        backgroundColor: string.isRequired,
-        iconColor: string.isRequired,
-        iconName: string.isRequired,
-        direction: string.isRequired,
-        position: string.isRequired,
-        iconSize: number.isRequired,
-        active: bool.isRequired,
-        children: any
+        onPress: PropTypes.func.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        iconColor: PropTypes.string.isRequired,
+        iconName: PropTypes.string.isRequired,
+        direction: PropTypes.string.isRequired,
+        position: PropTypes.string.isRequired,
+        iconSize: PropTypes.number.isRequired,
+        active: PropTypes.bool.isRequired,
+        children: PropTypes.any
     };
 
     static defaultProps = {

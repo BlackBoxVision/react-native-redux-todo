@@ -1,17 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
-import { func } from 'prop-types';
 import { Form, Button, Text, Body } from 'native-base';
 import { Field } from 'redux-form';
 
 import TextInput from './TextInput';
 
-import TextHelpers from '../../util/TextHelpers';
+import TextHelpers from '../../../util/TextHelpers';
 
 export default class TodoForm extends React.Component {
     static propTypes = {
-        translate: func.isRequired,
-        onSubmit: func.isRequired
+        translate: PropTypes.func.isRequired,
+        onSubmit: PropTypes.func.isRequired
     };
 
     render() {

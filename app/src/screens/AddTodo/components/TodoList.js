@@ -1,13 +1,13 @@
 import React from 'react';
-import { string, array, func } from 'prop-types';
+import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 import { Content } from 'native-base';
 import translate from 'react-i18next/dist/commonjs/translate';
 import compose from 'recompose/compose';
 
-import withIcons from '../common/hoc/withIcons';
+import withIcons from '../../../util/helper/hoc/withIcons';
 
-import EmptyView from '../common/EmptyView';
+import EmptyView from '../../../util/helper/EmptyView';
 import TodoItem from './TodoItem';
 
 const enhance = compose(
@@ -18,12 +18,12 @@ const enhance = compose(
 @enhance
 export default class TodoList extends React.Component {
     static propTypes = {
-        filter: string.isRequired,
-        items: array.isRequired,
-        translate: func.isRequired,
-        getIcon: func.isRequired,
-        toggleTodo: func.isRequired,
-        removeTodo: func.isRequired
+        filter: PropTypes.string.isRequired,
+        items: PropTypes.array.isRequired,
+        translate: PropTypes.func.isRequired,
+        getIcon: PropTypes.func.isRequired,
+        toggleTodo: PropTypes.func.isRequired,
+        removeTodo: PropTypes.func.isRequired
     };
 
     render() {

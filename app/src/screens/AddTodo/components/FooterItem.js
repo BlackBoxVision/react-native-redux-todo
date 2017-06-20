@@ -1,18 +1,18 @@
 import React from 'react';
-import { func, string, object, number, bool } from 'prop-types';
+import PropTypes from 'prop-types';
 import { FooterTab, Button, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import TextHelpers from '../../util/TextHelpers';
+import TextHelpers from '../../../util/TextHelpers';
 
 export default class FooterItem extends React.Component {
     static propTypes = {
-        isCurrentFilter: bool.isRequired,
-        changeFilter: func.isRequired,
-        message: string.isRequired,
-        icon: string.isRequired,
-        style: object.isRequired,
-        size: number.isRequired
+        isCurrentFilter: PropTypes.bool.isRequired,
+        changeFilter: PropTypes.func.isRequired,
+        message: PropTypes.string.isRequired,
+        icon: PropTypes.string.isRequired,
+        style: PropTypes.object.isRequired,
+        size: PropTypes.number.isRequired
     };
 
     static defaultProps = {

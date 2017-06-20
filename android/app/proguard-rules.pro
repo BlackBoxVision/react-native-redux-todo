@@ -50,8 +50,6 @@
 
 -dontwarn com.facebook.react.**
 
--dontwarn com.facebook.fbui.textlayoutbuilder.proxy.StaticLayoutProxy
-
 # okhttp
 
 -keepattributes Signature

@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
-import { array, string, object, objectOf, func } from 'prop-types';
 import { Container, Header, Left, Right, Title, Button, Body } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import bindActionCreators from 'redux/lib/bindActionCreators';
@@ -8,15 +8,14 @@ import connect from 'react-redux/lib/connect/connect';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
 
+import FloatingActionButton from '../../util/helper/FloatingButton';
+import TodoList from '../AddTodo/components/TodoList';
+import Footer from '../AddTodo/components/Footer';
 
-import FloatingActionButton from '../components/common/FloatingButton';
-import TodoList from '../components/list/TodoList';
-import Footer from '../components/list/Footer';
+import withBackButton from '../../util/helper/hoc/withBackButton';
 
-import withBackButton from '../components/common/hoc/withBackButton';
-
-import * as TodoActions from '../redux/todo/actions';
-import * as TodoSelectors from '../redux/todo/selector';
+import * as TodoActions from '../../redux/todo/actions';
+import * as TodoSelectors from '../../redux/todo/selector';
 
 const mapStateToProps = state => ({
     items: TodoSelectors.getVisibleTodos(state),
@@ -38,10 +37,14 @@ export default class Todos extends React.Component {
     static displayName = 'Todo App';
 
     static propTypes = {
-        items: array.isRequired,
-        filter: string.isRequired,
-        navigation: object.isRequired,
-        actions: objectOf(func).isRequired
+        items: PropTypes.array.isRequired,
+        filter: PropTypes.string.isRequired,
+        navigation: PropTypes.object.isRequired,
+        actions: PropTypes.shape({
+            removeTodo: PropTypes.func.isRequired,
+            toggleTodo: PropTypes.func.isRequired,
+            visibilityFilter: PropTypes.func.isRequired
+        }).isRequired
     };
 
     render() {

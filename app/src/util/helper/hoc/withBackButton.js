@@ -1,5 +1,5 @@
 import React  from 'react';
-import { number } from 'prop-types';
+import PropTypes from 'prop-types';
 import { BackAndroid, Platform } from 'react-native';
 import connect from 'react-redux/lib/connect/connect';
 
@@ -12,7 +12,7 @@ export default function withBackButton() {
         @connect(mapStateToProps)
         class BackButtonComponent extends React.Component {
             static propTypes = {
-                index: number.isRequired
+                index: PropTypes.number.isRequired
             }
 
             constructor(props, context) {

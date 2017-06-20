@@ -9,10 +9,10 @@ import pure from 'recompose/pure';
 
 import { reduxForm } from 'redux-form';
 
-import AddTodoForm from '../components/add/Form';
-import withBackButton from '../components/common/hoc/withBackButton';
+import AddTodoForm from '../Todos/components/Form';
+import withBackButton from '../../util/helper/hoc/withBackButton';
 
-import * as TodoActions from '../redux/todo/actions';
+import * as TodoActions from '../../redux/todo/actions';
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(TodoActions, dispatch)
